@@ -5,3 +5,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.tile{
+    background: rgba(255, 255, 255, 0.089);
+}
