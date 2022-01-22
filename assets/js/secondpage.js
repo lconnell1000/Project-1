@@ -52,3 +52,16 @@ let drinkIDs = [
 //need to do a function to update local storage by cocktails sold
 //this function will decrease stock but increase earning for the week
 
+$('#cocktial_form').submit(function() {
+    Event.preventDefault();
+    let longIslandSold = $('#long_island').val();
+    let mojitoSold = $('#mojito').val();
+    let margaritaSold = $('#margarita').val();
+    let greyhoundSold = $('#greyhound').val();
+    let martiniSold = $('#martini').val();
+    let bloodyMarySold = $('#bloody_mary').val();
+    let negroniSold = $('#negroni').val();
+    let amarettoSourSold = $('#amaretto_sour').val();
+    let tequilaFizz = $('#tequila_fizz').val();
+
+});
