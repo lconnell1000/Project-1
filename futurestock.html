@@ -7,11 +7,12 @@
     <title>Future Stock</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="./assets/css/futurestock.css">
    
 </head>
 <body>
-    <header>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+    <header class="">
+            <nav class="navbar has-background-success" role="navigation" aria-label="main navigation">
               
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start">
@@ -35,28 +36,93 @@
     </header>
 
     <main>
-        <div class="tile is-vertical is-ancestor">
+        <div >
             <div class="tile is-parent">
               <div class="tile is-4 is-child box">
                 <p class="title">Best Seller</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                <img id="drink" src="https://www.bigw.com.au/medias/sys_master/images/images/hf6/h6c/11881560801310.jpg" alt="" srcset="">
               </div>
-              <div class="tile is-child box">
+              <div class="tile box is-vertical"  >
                 <p class="title">7-day forcast</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                <div class="tile" id="weather">
+                </div>
               </div>
             </div>
+          </div>
+
+          <div >
             <div class="tile is-parent">
                 <div class="tile is-6 is-child box">
-                  <p class="title">Best Seller</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                  <p class="title">Cash flow</p>
+                  <table class="table">
+                    <tr>
+                      <th>Cash Reciepts</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Sale</td>
+                      <td id="sales">Sales</td>
+                    </tr>
+                    <tr>
+                      <td>Tax refund</td>
+                      <td id="tax">tax</td>
+                    </tr>
+                    <tr>
+                      <td>Other</td>
+                      <td id="inOther">Other</td>
+                    </tr>
+                    <tr>
+                      <th>Cash Payments</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Ingredient costs</td>
+                      <td id="ing">costs</td>
+                    </tr>
+                    <tr>
+                      <td>Other</td>
+                      <td id="outOther">Other</td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="tile is-child box">
-                  <p class="title">7-day forcast</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                  <p class="title">Suggestion</p>
+                  <table class="table">
+                    <tr>
+                      <th>Type of cocktails</th>
+                      <td id="drinkType">Hot/Cold</td>
+                    </tr>
+                    <tr>
+                      <th>What to buy</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td ></td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td ></td>
+                    </tr>
+                  </table>
                 </div>
             </div>
-        </div>
+            
+          </div>
+          
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./assets/js/app.js"></script>
     </main>
 </body>
