@@ -1,0 +1,23 @@
+.drink-section {
+  text-align: center;
+  border-radius: 5%;
+}
+
+.drink-section img {
+  width: 50%;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+ul {
+  font-size: 20px;
+}
+
+.instructions {
+  font-size: 15px;
+  padding: 30px;
+}
+
+#navBar {
+  padding-bottom: 50px;
+}
