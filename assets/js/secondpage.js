@@ -15,6 +15,7 @@ let drinkIDs = [
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[0]}`
     )
+    
       .then(function (response) {
         if (response.status !== 200) {
           console.log(
@@ -22,9 +23,9 @@ let drinkIDs = [
           );
           return;
         }
-  
+        
         response.json().then(function (data) {
-          console.log(data);
+            console.log(data)
         });
       })
       .catch(function (err) {
@@ -48,5 +49,6 @@ let drinkIDs = [
 
   enterSales();
   
-
+//need to do a function to update local storage by cocktails sold
+//this function will decrease stock but increase earning for the week
 
