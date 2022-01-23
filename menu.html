@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
     />
+    
     <link
       rel="stylesheet"
       href="menu.css"
@@ -23,6 +24,48 @@
 </div>
 </div>
 
+<div class="button is-danger is-large modal-button" data-target="launchModal" id="launchModal">Enter Site</div>
+ 
+ 
+<!-- MODAL -->
+
+<div id="modal-fadeInScale-fs" class="modal modal-fx-fadeInScale">
+ 
+    <div class="modal-content modal-card">
+ 
+        <header class="modal-card-head">
+ 
+            <p class="modal-card-title">Age Verification</p>
+ 
+            <button class="modal-button-close delete" id="closecross" aria-label="close"></button>
+ 
+        </header>
+ 
+        <section class="modal-card-body">
+ 
+          <div class="content">
+ 
+              <h1>Are You Over 18?</h1>
+ 
+              <p>This website requires you to be <span id = "age">18+ years</span> of age to enter.</p>
+ 
+        <div> 
+ 
+        </section>
+ 
+        <footer class="modal-card-foot">
+ 
+            <button class="modal-button-close button is-success">Yes</button>
+ 
+            <button class="modal-button-close button" id="closebtn">Close</button>
+ 
+        </footer>
+ 
+    </div>
+ 
+</div>
+ 
+ <!-- MODAL END -->
 
 
     <div class="container">

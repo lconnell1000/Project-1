@@ -10,12 +10,14 @@ let drinkIDs = [
   "13731 ",
 ];
 
-console.log(drinkIDs);
+drinkIDs.forEach(function (drinkId) {
+  getDrinksList(drinkId);
+});
 
-function getDrinksList() {
-  fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[0]}`
-  )
+function getDrinksList(drinkId) {
+  var queryUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
+  console.log(queryUrl);
+  fetch(queryUrl)
     .then(function (response) {
       if (response.status !== 200) {
         console.log(
@@ -67,3 +69,25 @@ function displayCocktail(cocktail) {
     drinkSection.appendChild(instructions);
   }
 }
+
+// MODAL
+$("#launchModal").click(function () {
+  $(".modal").addClass("is-active");
+});
+
+$(".modal-close").click(function () {
+  $(".modal").removeClass("is-active");
+});
+
+$("#closebtn").click(function () {
+  $(".modal").removeClass("is-active");
+});
+
+$("#closecross").click(function () {
+  $(".modal").removeClass("is-active");
+});
+
+//To-DO:
+// For loop for the cocktail cards to display drinkIDs array
+// Fix Modal - drink cards and nav bar are hidden until Enter Site is clicked and "yes" is clicked.
+//fix drink cards styling - all currently in 1 card.

@@ -9,7 +9,7 @@ html {
 .drink-section {
   text-align: center;
   border-radius: 5%;
-  background: rgb(255, 255, 255, 0.5);
+  background: rgb(255, 255, 255, 0.75);
 }
 
 .drink-section img {
@@ -29,4 +29,15 @@ ul {
 
 #navBar {
   padding-bottom: 50px;
+}
+
+#age {
+  color: red;
+  font-weight: 800;
+}
+
+#launchModal {
+  position: absolute;
+  top: 100px;
+  left: 40px;
 }
