@@ -15,7 +15,7 @@ let drinkIDs = [
   function getDrinksList() {
       for (i=0; i<drinkIDs.length; i++){
     fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[0]}`
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[i]}`
     )
     
       .then(function (response) {
@@ -38,7 +38,18 @@ let drinkIDs = [
  
   getDrinksList();
 
-
+  function getCocktailIngredients(cocktail) {
+    let cocktailName = cocktail.drinks[0].strDrink;
+    console.log(cocktailName);
+    for (let i=1; i<16; i++ ){
+        if (cocktail.drinks[0][`strMeasure${i}`] == null) {
+            //if no ingredient, break loop and stop adding to list
+            break;
+          }
+          let cocktailIngredients = cocktail.drinks[0][`strMeasure${i}`] +  "of " + cocktail.drinks[0][`strIngredient${i}`];
+       console.log(cocktailIngredients);
+    }
+}
 
   function enterSales () {
     $("#lanuchModalSales").click(function() {
@@ -52,8 +63,7 @@ let drinkIDs = [
 
   enterSales();
   
-//need to do a function to update local storage by cocktails sold
-//this function will decrease stock but increase earning for the week
+
 
 $('#cocktial_form').submit(function() {
     Event.preventDefault();
@@ -69,7 +79,3 @@ $('#cocktial_form').submit(function() {
 
 });
 
-function getCocktailIngredients(cocktail) {
-    let cocktailName = cocktail.drinks[0].strDrink;
-    console.log(cocktailName);
-}
