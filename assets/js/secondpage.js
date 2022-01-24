@@ -27,7 +27,7 @@ let drinkIDs = [
         }
         
         response.json().then(function (data) {
-            console.log(data);
+            //console.log(data);
             getCocktailIngredients(data);
         });
       })
@@ -40,14 +40,19 @@ let drinkIDs = [
 
   function getCocktailIngredients(cocktail) {
     let cocktailName = cocktail.drinks[0].strDrink;
+   
     console.log(cocktailName);
     for (let i=1; i<16; i++ ){
         if (cocktail.drinks[0][`strMeasure${i}`] == null) {
             //if no ingredient, break loop and stop adding to list
             break;
           }
-          let cocktailIngredients = cocktail.drinks[0][`strMeasure${i}`] +  "of " + cocktail.drinks[0][`strIngredient${i}`];
+         
+          let cocktailIngredients = cocktail.drinks[0][(`strMeasure${i}`)] +  "of " + cocktail.drinks[0][`strIngredient${i}`];
        console.log(cocktailIngredients);
+       for (j=0; j<drinkIDs.length; j++) {
+       localStorage.setItem(cocktailName, JSON.stringify(cocktailIngredients))
+       }
     }
 }
 
