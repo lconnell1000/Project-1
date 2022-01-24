@@ -10,6 +10,47 @@ let drinkIDs = [
   "13731 ",
 ];
 
+let stockTable=document.querySelector('#stockTable');
+
+let normalStock = {
+Amaretto :30,
+Bourbon	:50,
+Gin:	30,
+Tequila:	80,
+Vodka:	70,
+}
+
+function createTable(obj, objName) {
+  let result = '';
+  for (let i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      result +=`${i} = ${obj[i]}\n`;
+      var tr = document.createElement('tr');
+      var td1= document.createElement('td');
+      td1.innerText = `${i}`;
+      var td2= document.createElement('td');
+      console.log(i)
+      td2.innerText = `${obj[i]}\n`;
+      td2.classList.add(i);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      stockTable.appendChild(tr);
+    }
+  }
+  console.log(result);
+}
+createTable(normalStock,'normalStock')
+let ingredients = [
+  {
+    Amaretto :	30,
+    Bourbon	:50,
+    Gin:	30,
+    Tequila:	80,
+    Vodka:	70,
+    }
+]
+
 function getDrinksList() {
   for (i=0; i<drinkIDs.length; i++){
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[i]}`)
@@ -74,4 +115,4 @@ function getDrinksList() {
         
       });
       
-      
+  // 

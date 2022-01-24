@@ -27,3 +27,7 @@ form label {
   label.error {
     display: inline;
   }
+
+  table {
+    width:100%
+  }
