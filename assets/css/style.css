@@ -1,0 +1,29 @@
+html {
+  background: url("background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.tile{
+    background: rgba(255, 255, 255, 0.089);
+}
+
+form label {
+    display: inline-block;
+    width: 100px;
+  }
+  
+  form div {
+    margin-bottom: 10px;
+  }
+  
+  .error {
+    color: red;
+    margin-left: 5px;
+  }
+  
+  label.error {
+    display: inline;
+  }
