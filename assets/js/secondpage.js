@@ -1,3 +1,5 @@
+
+   
 let drinkIDs = [
     "11002",
     "11000",
@@ -11,7 +13,7 @@ let drinkIDs = [
   ];
 
   function getDrinksList() {
-      for (i=0; i<9; i++){
+      for (i=0; i<drinkIDs.length; i++){
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[0]}`
     )
@@ -25,7 +27,8 @@ let drinkIDs = [
         }
         
         response.json().then(function (data) {
-            console.log(data)
+            console.log(data);
+            getCocktailIngredients(data);
         });
       })
       .catch(function (err) {
@@ -65,3 +68,8 @@ $('#cocktial_form').submit(function() {
     let tequilaFizz = $('#tequila_fizz').val();
 
 });
+
+function getCocktailIngredients(cocktail) {
+    let cocktailName = cocktail.drinks[0].strDrink;
+    console.log(cocktailName);
+}
