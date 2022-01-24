@@ -1,6 +1,14 @@
 const APIkey = 'ba9bcf4f4e1396ead860b9554bf409d3';
 var displayDate= moment();
 var weather = document.querySelector('#weather')
+var openModal = document.querySelector('#launchModal');
+var modal = document.querySelector('.modal');
+var closeModal= document.querySelector('.modal-close')
+var closebtn= document.querySelector('#closebtn')
+var setDate = moment().day(0).format('ddd');
+var currentDate = moment().format('ddd');
+var returnMenu = document.querySelector('#returnMenu');
+var returnCurrentStock=document.querySelector('#returnCurrentStock')
 // fetch city's lat and lon
 function fetchCoor() {
     var link5day = 'https://api.openweathermap.org/data/2.5/forecast?q=Adelaide&cnt=6&appid='+APIkey+'&units=metric';
@@ -23,14 +31,12 @@ function fetchOnecall(lat,lon) {
   })
   .then(function (data) {
   var APIonecall = data;
-  console.log(APIonecall);
   futureWeather(APIonecall);
   });  
 }
 
 function futureWeather(a) {
     for (var i=1; i<7;i++){
-        console.log(a)
         forecast = document.createElement('div');
         forecast.className = "tile"
         date = document.createElement('h4')
@@ -47,12 +53,35 @@ function futureWeather(a) {
         forecast.appendChild(img);
         forecast.appendChild(futureConditions);
         futureConditions.appendChild(futureTemp);
-
     }
+}
+
+function launchModal() {
+ modal.classList.add('is-active')
+}
+
+function tocurrentstock() { 
+  modal.classList.remove('is-active')
+  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
+}
+
+function toMenu() { 
+  modal.classList.remove('is-active');
+  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
 }
 
 function innit() {
   fetchCoor();
+  if (currentDate !== setDate) {
+    launchModal();
+  }
+  openModal.addEventListener('click',launchModal);
+  returnMenu.addEventListener('click', toMenu);
+  returnCurrentStock.addEventListener('click', tocurrentstock);
+  closeModal.addEventListener('click',function(){
+    modal.classList.remove('is-active');
+  })
 }
 
 innit();
+

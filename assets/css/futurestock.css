@@ -1,3 +1,12 @@
+.navbar-menu {
+    margin-left: 48%;
+} 
+
+main{
+   background-image: url('background.jpg') ;
+}
+
+
 table {
     width: 100%;
 }
@@ -6,3 +15,8 @@ table {
     max-width: 10em;
     
 }
+
+.tile {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+

@@ -12,46 +12,47 @@
 </head>
 <body>
     <header class="">
-            <nav class="navbar has-background-success" role="navigation" aria-label="main navigation">
-              
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <a class="navbar-item" href="menu.html">
-                      Menu
-                    </a>
-              
-                    <a class="navbar-item" href="currentstock.html">
-                      Current Stock
-                    </a>
-              
-                    <a class="navbar-item" href="futurestock.html">
-                        Future Stock
-                    </a>
-              
-                    </div>
-                  </div>
-              
-                </div>
-              </nav>
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item"
+            href="https://www.health.gov.au/health-topics/alcohol/about-alcohol/alcohol-laws-in-australia"><strong> ?
+            </strong>
+          </a>
+        </div>
+    
+        <div id="navbar" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#">
+              Menu
+            </a>
+            <a class="navbar-item" href="#">
+              Current Stock
+            </a>
+            <a class="navbar-item" href="#">
+              Future Stock
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <div >
-            <div class="tile is-parent">
-              <div class="tile is-4 is-child box">
+        <section >
+            <article class="tile is-parent">
+              <figure class="tile is-4 is-child box">
                 <p class="title">Best Seller</p>
                 <img id="drink" src="https://www.bigw.com.au/medias/sys_master/images/images/hf6/h6c/11881560801310.jpg" alt="" srcset="">
-              </div>
-              <div class="tile box is-vertical"  >
+              </figure>
+              <figure class="tile box is-vertical"  >
                 <p class="title">7-day forcast</p>
                 <div class="tile" id="weather">
                 </div>
-              </div>
-            </div>
-          </div>
+              </figure>
+            </article>
+        </section>
 
-          <div >
-            <div class="tile is-parent">
+        <section >
+            <article class="tile is-parent">
                 <div class="tile is-6 is-child box">
                   <p class="title">Cash flow</p>
                   <table class="table">
@@ -118,10 +119,33 @@
                     </tr>
                   </table>
                 </div>
-            </div>
+            </article>
             
+        </section>
+        <!-- modal -->
+        <div id="modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Alert</strong> 
+                      <br>
+                      You can only access this page on Sunday.
+                    </p>
+                  </div>
+                  <button class="button is-danger is-small" id="returnMenu">Return to Menu</button>
+                  <button class="button is-danger is-small" id="returnCurrentStock">Return to Current Stock</button>
+                </div>
+              </article>
+            </div>
           </div>
-          
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <button class="button is-danger is-large" id="launchModal">Show Modal</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./assets/js/app.js"></script>
     </main>
