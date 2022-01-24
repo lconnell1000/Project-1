@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Stock Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="./Assets/css/style.css" />
+</head>
+
+<body>
+    <div class="tile is ancestor">
+        <div class="tile is-12 is-vertical is-parent">
+            <div class="tile is-child box">
+              <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                  <a class="navbar-item"
+                    href="https://www.health.gov.au/health-topics/alcohol/about-alcohol/alcohol-laws-in-australia"><strong> ?
+                    </strong>
+                  </a>
+                </div>
+            
+                <div id="navbar" class="navbar-menu">
+                  <div class="navbar-start">
+                    <a class="navbar-item" href="#">
+                      Menu
+                    </a>
+                    <a class="navbar-item" href="#">
+                      Current Stock
+                    </a>
+                    <a class="navbar-item" href="#">
+                      Future Stock
+                    </a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-6 is-vertical is-parent">
+            <div class="tile is-child box">
+                <p class="title">Current Stock Levels</p>
+                
+
+
+            </div>
+        </div>
+        <div class="tile is-6 is-vertical is-parent">
+            <div class="tile is-child box">
+                <p class="title">Enter Todays Sales</p>
+                <div id="modal" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                      <div class="box">
+                        <article class="media">
+                          <div class="media-left">
+                          </div>
+                          <div class="media-content">
+                            <div class="contentSales">
+                              <p>
+                                <strong>Enter Todays Sales:</strong>  
+                                <br>
+                                <h2>Enter the Amount of Each Socktail Sold:</h2>
+                                <br>
+                                <p>if Zero of Any Coktail Sold Please Enter 0</p>
+                                <br>
+<form id="cocktail_form" method="post" action="">
+  <div>
+    <label for="long_island">Long Island Ice Tea:</label>
+    <input type="number" id="long_island" name="long_island"></input>
+  </div>
+  <div>
+    <label for="manhattan">Manhattan:</label>
+    <input type="number" id="manhattan" name="manhattan"></input>
+  </div>
+  <div>
+    <label for="margarita">Margarita:</label>
+    <input type="number" id="margarita" name="margarita"></input>
+  </div>
+  <div>
+    <label for="tequila_fizz">Tequila Fizz:</label>
+    <input type="number" id="tequila_fizz" name="tequila_fizz"></input>
+  </div>
+  <div>
+    <label for="greyhound">Greyhound:</label>
+    <input type="number" id="greyhound" name="greyhound"></input>
+  </div>
+  <div>
+    <label for="martini">Martini:</label>
+    <input type="number" id="martini" name="martini"></input>
+  </div>
+  <div>
+    <label for="bloody_mary">Bloody Mary:</label>
+    <input type="number" id="bloody_mary" name="bloody_mary"></input>
+  </div>
+  <div>
+    <label for="negroni">Negroni:</label>
+    <input type="number" id="negroni" name="negroni"></input>
+  </div>
+  <div>
+    <label for="amaretto_sour">Amaretto Sour:</label>
+    <input type="number" id="amaretto_sour" name="amaretto_sour"></input>
+  </div>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
+                              </p>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
+                  </div>
+                  <button class="button is-danger is-large" id="lanuchModalSales">Enter Sales</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/secondpage.js"></script>
+</body>
+
+</html>
