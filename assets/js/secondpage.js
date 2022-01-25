@@ -24,6 +24,18 @@ Tequila:	80,
 Vodka:	70,
 }
 
+let currentStock = {
+  Amaretto :30,
+  Bourbon	:50,
+  Campari:0,
+  Gin:	30,
+  Rum: 30,
+  SweetVermouth: 15,
+  DryVermouth: 15,
+  Tequila:	80,
+  Vodka:	70,
+  }
+
 // Display current stock in a table
 function createTable(obj) {
   stockTable.innerHTML='';
@@ -45,14 +57,11 @@ function createTable(obj) {
 }
 
 // Save current stock to local storage
-function saveCurrent() {
-
+function saveCurrent(obj, objName) {
+  localStorage.setItem(objName, JSON.stringify(obj));
 }
-
-
-
 createTable(normalStock,'normalStock')
-
+saveCurrent(currentStock,'currentStock')
 
 function getDrinksList() {
   for (i=0; i<drinkIDs.length; i++){
