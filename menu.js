@@ -1,6 +1,6 @@
 let drinkIDs = [
   "11002",
-  "11000",
+  "11008",
   "11007",
   "12362",
   "17252",
@@ -16,7 +16,7 @@ drinkIDs.forEach(function (drinkId) {
 
 function getDrinksList(drinkId) {
   var queryUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
-  console.log(queryUrl);
+
   fetch(queryUrl)
     .then(function (response) {
       if (response.status !== 200) {
@@ -26,56 +26,61 @@ function getDrinksList(drinkId) {
         return;
       }
 
-      response.json().then(function (data) {
-        console.log(data);
-        displayCocktail(data);
-      });
+      return response.json();
     })
-    .catch(function (err) {
-      console.log("Fetch Error :-S", err);
+    .then(function (data) {
+      displayCocktail(data);
     });
 }
 
-getDrinksList();
-
 function displayCocktail(cocktail) {
-  let drinkSection = document.querySelector("h2.title");
-  let drinkName = document.createElement("p");
-  drinkName.innerHTML = cocktail.drinks[0].strDrink;
-  drinkSection.appendChild(drinkName);
-  console.log(drinkName);
+  getCocktailIngredients(cocktail);
+  let $h2 = $("<h2></h2>").text(cocktail.drinks[0].strDrink).addClass("title");
+  let $tileParent = $('<div class="tile is-child box drink-section"></div>');
+  let $tileGrandparent = $(
+    '<div class="tile is-4 is-vertical is-parent"></div>'
+  );
+  let image = $("<img>").attr("src", cocktail.drinks[0].strDrinkThumb);
+  let instructions = $("<p></p>")
+    .text(cocktail.drinks[0].strInstructions)
+    .addClass("instructions");
 
-  let img = document.createElement("img");
-  img.src = cocktail.drinks[0].strDrinkThumb;
-  drinkSection.appendChild(img);
+  let ingredients = $("<ul>").text("INSERT INGREDIENTS");
 
+  $tileParent.append($h2);
+  $tileParent.append(image);
+  $tileParent.append(ingredients);
+  $tileParent.append(instructions);
+  $tileGrandparent.append($tileParent);
+  $("#parent").append($tileGrandparent);
+}
+
+function getCocktailIngredients(cocktail) {
+  let cocktailName = cocktail.drinks[0].strDrink;
+  let ing = [];
   for (let i = 1; i < 16; i++) {
-    console.log(i);
-
     if (cocktail.drinks[0][`strMeasure${i}`] == null) {
       //if no ingredient, break loop and stop adding to list
       break;
     }
-    let ingredient = document.createElement("ul");
-    ingredient.innerHTML =
+    const cocktailIngredients =
       cocktail.drinks[0][`strMeasure${i}`] +
       "of " +
       cocktail.drinks[0][`strIngredient${i}`];
-    drinkSection.appendChild(ingredient);
-
-    let instructions = document.querySelector(".instructions");
-    instructions.innerHTML =
-      "Instructions:  " + cocktail.drinks[0].strInstructions;
-    drinkSection.appendChild(instructions);
+    ing.push(cocktailIngredients);
+    console.log(cocktailIngredients);
   }
 }
+
+// **********************************
 
 // MODAL
 $("#launchModal").click(function () {
   $(".modal").addClass("is-active");
+  // $(".drink-section").addClass("is-active");
 });
 
-$(".modal-close").click(function () {
+$(".modal-button-close").click(function () {
   $(".modal").removeClass("is-active");
 });
 

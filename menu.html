@@ -14,7 +14,8 @@
       rel="stylesheet"
       href="menu.css"
     />
-    
+   
+  </div>
   </head>
   <body>
     <div class="tile-is-parent" id="navBar">
@@ -23,11 +24,9 @@
     </div>
 </div>
 </div>
-
+<!-- MODAL -->
 <div class="button is-danger is-large modal-button" data-target="launchModal" id="launchModal">Enter Site</div>
  
- 
-<!-- MODAL -->
 
 <div id="modal-fadeInScale-fs" class="modal modal-fx-fadeInScale">
  
@@ -55,7 +54,7 @@
  
         <footer class="modal-card-foot">
  
-            <button class="modal-button-close button is-success">Yes</button>
+            <button class="modal-button-close button is-success" id="yesBtn">Yes</button>
  
             <button class="modal-button-close button" id="closebtn">Close</button>
  
@@ -69,90 +68,121 @@
 
 
     <div class="container">
-      <div class="tile is-ancestor">
-        <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "One">
-            <h2 class="title"></h2>
+      <div class="tile is-ancestor" id="parent">
+        <!-- <div class="tile is-4 is-vertical is-parent"> -->
+          <!-- <div class="tile is-child box drink-section" data-number ="1">
+            
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div> -->
+        <!-- </div> -->
+        <!-- <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="2">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
             <p class = "instructions"></p>
           </div>
         </div>
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Two">
-            <p class="title">cocktail 2</p>
+          <div class="tile is-child box drink-section" data-number="3">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
-        </div>
-        <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Three">
-            <p class="title">cocktail 3</p>
-            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
-          </div>
-        </div>
+        </div> -->
       </div>
-      <div class="tile is-ancestor">
+      <!-- <div class="tile is-ancestor">
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Four">
-            <p class="title">cocktail 4</p>
+          <div class="tile is-child box drink-section" data-number="4">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
         </div>
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Five">
-            <p class="title">cocktail 5</p>
+          <div class="tile is-child box drink-section" data-number="5">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
         </div>
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Six">
-            <p class="title">cocktail 6</p>
+          <div class="tile is-child box drink-section" data-number="6">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
         </div>
-      </div>
-      <div class="tile is-ancestor">
+      </div> -->
+      <!-- <div class="tile is-ancestor" id="parent">
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Seven">
-            <p class="title">cocktail 7</p>
+          <div class="tile is-child box drink-section" data-number="7">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
-          </div>
-        </div>
-        <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Eight">
-            <p class="title">cocktail 8</p>
-            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
         </div>
         <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box drink-section" id = "Nine">
-            <p class="title">cocktail 9</p>
+          <div class="tile is-child box drink-section" data-number="8">
+            <h2 class="title">Cocktail</h2>
             <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
-            <ul>ingredient 1</ul>
-            <ul>ingredient 2</ul>
-            <ul>ingredient 3</ul>
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
           </div>
         </div>
-      </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="9">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

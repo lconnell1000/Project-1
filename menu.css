@@ -41,3 +41,8 @@ ul {
   top: 100px;
   left: 40px;
 }
+
+#parent {
+  display: flex;
+  flex-wrap: wrap;
+}
