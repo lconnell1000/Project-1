@@ -16,8 +16,12 @@ var gin;
 var bourbon;
 var amaretto;
 var sweetVermouth;
+var dryVermouth;
+var cointreau;
+var campari;
 
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth]
+
 
 
 function getDrinksList() {
@@ -43,7 +47,7 @@ function getDrinksList() {
       
       function getCocktailIngredients(cocktail) {
         let cocktailName = cocktail.drinks[0].strDrink;
-       // console.log(cocktailName);
+        console.log(cocktailName);
         let ing = [];
 
         for (let i=1; i<16; i++ ){
@@ -53,7 +57,7 @@ function getDrinksList() {
           }
           const cocktailIngredients = cocktail.drinks[0][(`strMeasure${i}`)] +  "of " + cocktail.drinks[0][`strIngredient${i}`];
           ing.push(cocktailIngredients);
-       // console.log(ing)
+        console.log(ing)
         }
         
         localStorage.setItem(cocktailName, JSON.stringify(ing))
@@ -71,22 +75,7 @@ function getDrinksList() {
       
       enterSales();
       
-      $('#cocktial_form').submit(function() {
-        Event.preventDefault();
-        let longIslandSold = $('#long_island').val();
-        console.log(longIslandSold);
-        let newVodkaStock = ((localStorage.getItem('currentVodkaStock'))-(0.5*(longIslandSold)));
-        localStorage.setItem(CurrentVodkaStock, newVodkaStock)
-        let manhattanSold = $('#manhattan').val();
-        let margaritaSold = $('#margarita').val();
-        let greyhoundSold = $('#greyhound').val();
-        let martiniSold = $('#martini').val();
-        let bloodyMarySold = $('#bloody_mary').val();
-        let negroniSold = $('#negroni').val();
-        let amarettoSourSold = $('#amaretto_sour').val();
-        let tequilaFizz = $('#tequila_fizz').val();
-        
-      });
+    
       
     // function convertFractions() {
     //   let NegroniIngredients = JSON.parse(localStorage.getItem ('Negroni'));
@@ -107,5 +96,45 @@ function getDrinksList() {
     // convertFractions();
 
     function updatestock() {
-
+      $('#cocktial_form').submit(function() {
+        Event.preventDefault();
+        let longIslandSold = $('#long_island').val();
+        let manhattanSold = $('#manhattan').val();
+        let margaritaSold = $('#margarita').val();
+        let greyhoundSold = $('#greyhound').val();
+        let martiniSold = $('#martini').val();
+        let bloodyMarySold = $('#bloody_mary').val();
+        let negroniSold = $('#negroni').val();
+        let amarettoSourSold = $('#amaretto_sour').val();
+        let tequilaFizzSold = $('#tequila_fizz').val();
+        if (longIslandSold && greyhoundSold && bloodyMarySold && manhattanSold && margaritaSold && martiniSold && negroniSold && amarettoSourSold && tequilaFizzSold >= 0){
+        let newVodkaStock = ((JSON.parse(localStorage.getItem(currentStock.Vodka)))-(0.5*(longIslandSold))-(1.5*(bloodyMarySold))-(1.5*(greyhoundSold)));
+      localStorage.setItem((currentStock.Vodka), JSON.stringify(newVodkaStock));
+        let newRumStock = ((JSON.parse(localStorage.getItem(currentStock.Rum)))-(0.5*(longIslandSold)));
+      localStorage.setItem((currentStock.Rum), JSON.stringify(newRumStock));
+        let newTeqStock =((JSON.parse(localStorage.getItem(currentStock.Tequila)))-(0.5*(longIslandSold))-(1.5*(margaritaSold))-(2*(tequilaFizzSold)));
+        localStorage.setItem((currentStock.Tequila),JSON.stringify(newTeqStock));
+        let newGinStock = ((JSON.parse(localStorage.getItem(currentStock.Gin)))-(0.5*(longIslandSold))-(negroniSold)-((5/3)*(martiniSold)));
+        localStorage.setItem = ((currentStock.Gin),JSON.stringify(newGinStock));
+        let newBourbonStock = ((JSON.parse(localStorage.getItem(currentStock.Bourbon)))-(2.5*(manhattanSold)));
+        localStorage.setItem = ((currentStock.Bourbon),JSON.stringify(newBourbonStock));
+        let newAmarettoStock = ((JSON.parse(localStorage.getItem(currentStock.Amaretto)))-(1.5*(amarettoSourSold)));
+        localStorage.setItem = ((currentStock.Amaretto),JSON.stringify(newAmarettoStock));
+        let newSweetVermouthStock = ((JSON.parse(localStorage.getItem(currentStock.sweetVermouth)))-((0.75)*(manhattanSold))-(negroniSold));
+        localStorage.setItem = ((currentStock.sweetVermouth),JSON.stringify(newSweetVermouthStock));
+        let newdryVermouthStock = ((JSON.parse(localStorage.getItem(currentStock.dryVermouth)))-((1/3)*(martiniSold)));
+        localStorage.setItem = ((currentStock.dryVermouth),JSON.stringify(newdryVermouthStock));
+        let newCointreauStock = ((JSON.parse(localStorage.getItem(currentStock.cointreau)))-((0.5)*(margaritaSold)));
+        localStorage.setItem = ((currentStock.cointreau),JSON.stringify(newCointreauStock));
+        let newCampariStock = ((JSON.parse(localStorage.getItem(currentStock.campari)))-(negroniSold));
+        localStorage.setItem = ((currentStock.campari),JSON.stringify(newCampariStock));
+      }
+        else (console.log('error, please make sure all cocktails are 0 or greater'));
+        {
+          updatestock();
+        }
+      });
+      
+      localStorage.setItem(CurrentVodkaStock, '70')
     }
+    updatestock();
