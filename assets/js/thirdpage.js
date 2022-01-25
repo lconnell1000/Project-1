@@ -12,9 +12,21 @@ var returnCurrentStock=document.querySelector('#returnCurrentStock')
 var drinkType = document.querySelector('#drinkType')
 var APIonecall
 var tempArray = [];
+let normalStock = {
+  Amaretto :30,
+  Bourbon	:50,
+  Campari:0,
+  Gin:	30,
+  Rum: 30,
+  SweetVermouth: 15,
+  DryVermouth: 15,
+  Tequila:	80,
+  Vodka:	70,
+  }
 // fetch city's lat and lon
 function fetchCoor() {
-    var link5day = 'https://api.openweathermap.org/data/2.5/forecast?q=Adelaide&cnt=6&appid='+APIkey+'&units=metric';
+    var city = 'Adelaide' //reusable if want to use for another location
+    var link5day = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&cnt=6&appid='+APIkey+'&units=metric';
     fetch(link5day)
     .then(function (response) {
       return response.json();
@@ -39,7 +51,7 @@ function fetchOnecall(lat,lon) {
 }
 // display next week weather
 function futureWeather(a) {
-    for (var i=1; i<7;i++){
+    for (var i=1; i<8;i++){
         forecast = document.createElement('div');
         forecast.className = "tile"
         date = document.createElement('h4');
@@ -61,12 +73,13 @@ function futureWeather(a) {
         forecast.appendChild(futureConditions);
         futureConditions.appendChild(futureTemp);
     }
+    drinkSug();
 }
 // launch Modal if not access on Sunday
 function launchModal() {
  modal.classList.add('is-active')
 }
-// redirice to current stock page
+// redirect to current stock page
 function tocurrentstock() { 
   modal.classList.remove('is-active')
   document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
@@ -77,19 +90,32 @@ function toMenu() {
   document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
 }
 
+// Get current stock from local storage
+function getStock() {
+  var stock = JSON.parse(localStorage.getItem("currentStock")); 
+}
+
+// Suggest what need to buy
+function suggestNormal(){
+
+}
+
 // suggest drink type based on weather
 function drinkSug() {
-  var sum
+  var sum=0;
   for (var i=0; i<tempArray.length;i++) {
-    sum =+ tempArray[i];
+    sum += tempArray[i];
   }
   var avg = sum/tempArray.length;
+  console.log(avg);
   if (avg>27) {
     drinkType.textContent = 'Hot drink';
   }
+  else if (17<=avg && avg <=27){
+    drinkType.textContent = 'Both';
+  }
   else {
-    drinkType.textContent = 'Cold drink'
-
+    drinkType.textContent = 'Cold drink';
   }
 }
 
@@ -105,7 +131,6 @@ function innit() {
   closeModal.addEventListener('click',function(){
     modal.classList.remove('is-active');
   })
-  drinkSug();
 }
 
 

@@ -60,8 +60,8 @@ function createTable(obj) {
 function saveCurrent(obj, objName) {
   localStorage.setItem(objName, JSON.stringify(obj));
 }
-createTable(normalStock,'normalStock')
-saveCurrent(currentStock,'currentStock')
+createTable(normalStock,'normalStock');
+saveCurrent(currentStock,'currentStock');
 
 function getDrinksList() {
   for (i=0; i<drinkIDs.length; i++){
