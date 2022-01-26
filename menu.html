@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="menu.css"
+    />
+   
+  </div>
+  </head>
+  <body>
+    <div class="tile-is-parent" id="navBar">
+    <div class="tile is-child box">
+        Nav Bar Goes Here
+    </div>
+</div>
+</div>
+<!-- MODAL -->
+<div class="button is-danger is-large modal-button" data-target="launchModal" id="launchModal">Enter Site</div>
+ 
+
+<div id="modal-fadeInScale-fs" class="modal modal-fx-fadeInScale">
+ 
+    <div class="modal-content modal-card">
+ 
+        <header class="modal-card-head">
+ 
+            <p class="modal-card-title">Age Verification</p>
+ 
+            <button class="modal-button-close delete" id="closecross" aria-label="close"></button>
+ 
+        </header>
+ 
+        <section class="modal-card-body">
+ 
+          <div class="content">
+ 
+              <h1>Are You Over 18?</h1>
+ 
+              <p>This website requires you to be <span id = "age">18+ years</span> of age to enter.</p>
+ 
+        <div> 
+ 
+        </section>
+ 
+        <footer class="modal-card-foot">
+ 
+            <button class="modal-button-close button is-success" id="yesBtn">Yes</button>
+ 
+            <button class="modal-button-close button" id="closebtn">Close</button>
+ 
+        </footer>
+ 
+    </div>
+ 
+</div>
+ 
+ <!-- MODAL END -->
+
+
+    <div class="container">
+      <div class="tile is-ancestor" id="parent">
+        <!-- <div class="tile is-4 is-vertical is-parent"> -->
+          <!-- <div class="tile is-child box drink-section" data-number ="1">
+            
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div> -->
+        <!-- </div> -->
+        <!-- <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="2">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="3">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div> -->
+      </div>
+      <!-- <div class="tile is-ancestor">
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="4">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="5">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="6">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="tile is-ancestor" id="parent">
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="7">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="8">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box drink-section" data-number="9">
+            <h2 class="title">Cocktail</h2>
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview">
+            <ul>
+              <li>ingredient 1</li>
+            <li>ingredient 2</li>
+            <li>ingredient 3</li>
+            </ul>
+            <p class = "instructions"></p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="menu.js"></script>
+  </body>
+</html>
