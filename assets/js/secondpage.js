@@ -20,8 +20,17 @@ var dryVermouth;
 var cointreau;
 var campari;
 
-let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth]
+let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
+let totalCocktailsSold = [totalLongIslandSold, totalManhattanSold, totalMargaritaSold, totalGreyhoundSold, totalMartiniSold, totalBloodyMarySold, totalNegroniSold, totalAmarettoSourSold, totalTequilaFizzSold];
+
+function cocktailsHaveBeenSold () {
+  for (i=0; i<totalCocktailsSold.length; i++)
+  if (totalCocktailsSold[i] === undefined) {
+    totalCocktailsSold[i] = 0;
+  }
+
+}
 
 
 function getDrinksList() {
@@ -68,7 +77,9 @@ function getDrinksList() {
       $(".modal").addClass("is-active");  
     });
     
-    $(".modal-close").click(function() {
+    $("#entersales").click(function() {
+      cocktailsHaveBeenSold();
+      updatestock();
       $(".modal").removeClass("is-active");
     });
   }
@@ -96,7 +107,7 @@ function getDrinksList() {
   // convertFractions();
   
   function updatestock() {
-    $('#cocktial_form').submit(function(e) {
+    $('#cocktail_form').submit(function(e) {
       e.preventDefault();
       let longIslandSold = $('#long_island').val();
       let manhattanSold = $('#manhattan').val();
@@ -107,6 +118,21 @@ function getDrinksList() {
       let negroniSold = $('#negroni').val();
       let amarettoSourSold = $('#amaretto_sour').val();
       let tequilaFizzSold = $('#tequila_fizz').val();
+      console.log(totalCocktailsSold);
+      if ((typeof totalCocktailsSold) === object) {
+      localStorage.getItem(totalCocktailsSold, JSON.parse(cocktailsSold));
+      
+      let totalCocktailsSold = [(totalLongIslandSold + longIslandSold),(totalManhattanSold + manhattanSold),(margaritaSold + totalMargaritaSold),(greyhoundSold + totalGreyhoundSold),(martiniSold + totalMartiniSold),(bloodyMarySold + totalBloodyMarySold),( negroniSold + totalNegroniSold, (amarettoSourSold + totalAmarettoSourSold),(tequilaFizzSold + totalTequilaFizzSold))];
+      
+      localStorage.setItem(totalCocktailsSold, JSON.stringify(totalCocktailsSold));
+      }
+
+      else {
+        let totalCocktailsSold = [longIslandSold,manhattanSold,margaritaSold,greyhoundSold,martiniSold,bloodyMarySold,negroniSold,amarettoSourSold,tequilaFizzSold];
+      }
+      }
+    
+
       if (longIslandSold >=0 && greyhoundSold >= 0 && bloodyMarySold >= 0 && manhattanSold >=0 && margaritaSold >= 0 && martiniSold >= 0 && negroniSold >= 0 && amarettoSourSold >= 0 && tequilaFizzSold >= 0){
         let newVodkaStock = ((JSON.parse(localStorage.getItem(currentStock.Vodka)))-(0.5*(longIslandSold))-(1.5*(bloodyMarySold))-(1.5*(greyhoundSold)));
         localStorage.setItem((currentStock.Vodka), JSON.stringify(newVodkaStock));
@@ -137,4 +163,4 @@ function getDrinksList() {
     
    
   }
-  updatestock();
+  
