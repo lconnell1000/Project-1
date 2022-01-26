@@ -22,13 +22,13 @@
     
         <div id="navbar" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="./menu.html">
               Menu
             </a>
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="./currentstock.html">
               Current Stock
             </a>
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="./futurestock.html">
               Future Stock
             </a>
           </div>
@@ -39,10 +39,10 @@
     <main>
         <section >
             <article class="tile is-parent">
-              <figure class="tile is-4 is-child box">
+              <div class="tile is-4 is-child box">
                 <p class="title">Best Seller</p>
-                <img id="drink" src="https://www.bigw.com.au/medias/sys_master/images/images/hf6/h6c/11881560801310.jpg" alt="" srcset="">
-              </figure>
+                <p class="title" id="bestsell"></p>
+              </div>
               <figure class="tile box is-vertical"  >
                 <p class="title">7-day forcast</p>
                 <div class="tile" id="weather">
@@ -65,14 +65,6 @@
                       <td id="sales">Sales</td>
                     </tr>
                     <tr>
-                      <td>Tax refund</td>
-                      <td id="tax">tax</td>
-                    </tr>
-                    <tr>
-                      <td>Other</td>
-                      <td id="inOther">Other</td>
-                    </tr>
-                    <tr>
                       <th>Cash Payments</th>
                       <td></td>
                     </tr>
@@ -81,8 +73,8 @@
                       <td id="ing">costs</td>
                     </tr>
                     <tr>
-                      <td>Other</td>
-                      <td id="outOther">Other</td>
+                      <th>Net Cash Flow</th>
+                      <td id="netCash"></td>
                     </tr>
                   </table>
                 </div>
@@ -93,8 +85,11 @@
                       <th>Type of cocktails</th>
                       <td id="drinkType"></td>
                     </tr>
+                  </table>
+                  <p class="title">What to buy</p>
+                  <table>
                     <tr>
-                      <th>What to buy</th>
+                      <th></th>
                       <td></td>
                     </tr>
                     <tr>
