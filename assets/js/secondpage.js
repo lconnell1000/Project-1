@@ -19,18 +19,19 @@ var sweetVermouth;
 var dryVermouth;
 var cointreau;
 var campari;
+var totalLongIslandSold;
+var totalManhattanSold;
+var totalMargaritaSold;
+var totalGreyhoundSold;
+var totalMartiniSold;
+var totalBloodyMarySold;
+var totalNegroniSold;
+var totalAmarettoSourSold;
+var totalTequilaFizzSold;
 
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
-let totalCocktailsSold = [totalLongIslandSold, totalManhattanSold, totalMargaritaSold, totalGreyhoundSold, totalMartiniSold, totalBloodyMarySold, totalNegroniSold, totalAmarettoSourSold, totalTequilaFizzSold];
 
-function cocktailsHaveBeenSold() {
-  for (i = 0; i < totalCocktailsSold.length; i++)
-    if (totalCocktailsSold[i] === 'undefined') {
-      totalCocktailsSold[i] = 0;
-    }
-
-}
 
 
 function getDrinksList() {
@@ -79,8 +80,8 @@ function enterSales() {
   });
 
   $("#entersales").click(function () {
-    cocktailsHaveBeenSold();
     updatestock();
+    
     $(".modal").removeClass("is-active");
   });
 }
@@ -119,8 +120,11 @@ function updatestock() {
     let negroniSold = $('#negroni').val();
     let amarettoSourSold = $('#amaretto_sour').val();
     let tequilaFizzSold = $('#tequila_fizz').val();
+updateStockCocktail ();
+  })};
 
-    updateCocktailsSold();
+    function updateStockCocktails() {
+    updateTotalCocktailsSold();
 
 
     if (longIslandSold >= 0 && greyhoundSold >= 0 && bloodyMarySold >= 0 && manhattanSold >= 0 && margaritaSold >= 0 && martiniSold >= 0 && negroniSold >= 0 && amarettoSourSold >= 0 && tequilaFizzSold >= 0) {
@@ -149,11 +153,12 @@ function updatestock() {
     {
       return;
     }
-  });
-
-
+  })
 }
-function updateCocktailsSold() {
+
+
+
+function updateTotalCocktailsSold() {
   if ((typeof totalCocktailsSold) === object) {
     localStorage.getItem(totalCocktailsSold, JSON.parse(cocktailsSold));
 
@@ -163,6 +168,8 @@ function updateCocktailsSold() {
   }
 
   else {
+    cocktailsHaveBeenSold();
     let totalCocktailsSold = [longIslandSold, manhattanSold, margaritaSold, greyhoundSold, martiniSold, bloodyMarySold, negroniSold, amarettoSourSold, tequilaFizzSold];
+    localStorage.setItem(totalCocktailsSold, totalCocktailsSold);
   }
 }
