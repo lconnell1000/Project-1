@@ -64,18 +64,8 @@ let cocktailSale = {
   amaretto: 10,
 }
 
+const drinkPrices = 20
 
-const drinkPrices = {
-  longIsland : 10,
-  mojito : 10,
-  margarita : 10,
-  tequilaFizz : 10,
-  greyhound :10,
-  manhattan : 10,
-  bloodyMarry: 10,
-  negori: 10,
-  amaretto: 10,
-}
 // fetch city's lat and lon
 function fetchCoor() {
     var city = 'Adelaide' //reusable if want to use for another location
@@ -174,8 +164,8 @@ function NCF() {
 // Calculate sale
 function drinksale() {
   let earning =0;
-  for (let i in drinkPrices) {
-    let sold = cocktailSale[i]*drinkPrices[i];
+  for (let i in cocktailSale) {
+    let sold = cocktailSale[i]*drinkPrices;
     earning += sold;
   }
   sales.textContent = '$'+earning;
@@ -202,7 +192,7 @@ function drinkSug() {
   var avg = sum/tempArray.length;
   console.log(avg);
   if (avg>27) {
-    drinkType.textContent = 'Hot drink';
+    drinkType.textContent = 'Warm drink';
   }
   else if (17<=avg && avg <=27){
     drinkType.textContent = 'Both';
