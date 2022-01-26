@@ -36,7 +36,7 @@ $(document).ready(function () {
   }
 
   function displayCocktail(cocktail) {
-    getCocktailIngredients(cocktail);
+    // getCocktailIngredients(cocktail);
     let $h2 = $("<h2></h2>")
       .text(cocktail.drinks[0].strDrink)
       .addClass("title");
@@ -48,46 +48,39 @@ $(document).ready(function () {
     let instructions = $("<p></p>")
       .text(cocktail.drinks[0].strInstructions)
       .addClass("instructions");
-    let ingredients = $("<ul>").addClass("ingredients").text("TEST");
+    // let ingredients = $("<ul>").addClass("ingredients").text("TEST");
 
     $tileParent.append($h2);
     $tileParent.append(image);
-    $tileParent.append(ingredients);
-
+    getCocktailIngredients(cocktail);
+    $tileParent.append(getCocktailIngredients(cocktail));
     $tileParent.append(instructions);
     $tileGrandparent.append($tileParent);
     $("#parent").append($tileGrandparent);
 
     function getCocktailIngredients(cocktail) {
       let cocktailName = cocktail.drinks[0].strDrink;
-      console.log(cocktailName);
       let ing = [];
+      let ingredients = $("<ul>").addClass("ingredients").text("TEST");
       for (let i = 1; i < 16; i++) {
         if (cocktail.drinks[0][`strMeasure${i}`] == null) {
           //if no ingredient, break loop and stop adding to list
+          console.log(i);
           break;
         }
-
-        const cocktailIngredients =
+        let cocktailIngredients =
           cocktail.drinks[0][`strMeasure${i}`] +
           " " +
           cocktail.drinks[0][`strIngredient${i}`];
         ing.push(cocktailIngredients);
-        // console.log (cocktailIngredients)
         console.log(ing);
-      
-        drinkIDs.forEach (function (addIngredients){
-          var li = document.createElement ('li');
-          // var li = document.createElement ('li');
-          console.log (cocktailIngredients)
-          li.textContent = ing;
-          $(".ingredients").append (li);
-
-        // $(".ingredients").text(ing);
-        })
-        // $(".ingredients").text(ing);
       }
-    
+      for (let i=0;i<ing.length;i++){
+           var li = document.createElement ('li');
+           li.textContent=ing[i];
+           ingredients.append(li);
+      }
+      return ingredients; //new
     }
   }
 
