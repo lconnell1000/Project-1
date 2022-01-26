@@ -26,7 +26,7 @@ let totalCocktailsSold = [totalLongIslandSold, totalManhattanSold, totalMargarit
 
 function cocktailsHaveBeenSold () {
   for (i=0; i<totalCocktailsSold.length; i++)
-  if (totalCocktailsSold[i] === undefined) {
+  if (totalCocktailsSold[i] === 'undefined') {
     totalCocktailsSold[i] = 0;
   }
 
