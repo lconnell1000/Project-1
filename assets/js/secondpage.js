@@ -153,8 +153,8 @@ updateStockCocktail ();
     {
       return;
     }
-  })
-}
+  }
+
 
 
 
