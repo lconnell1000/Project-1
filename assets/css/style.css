@@ -27,3 +27,7 @@ form label {
   label.error {
     display: inline;
   }
+
+  .navbar-menu {
+    margin-left: 38%;
+} 
