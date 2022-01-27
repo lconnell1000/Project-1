@@ -34,6 +34,59 @@ let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
 
 
+let stockTable=document.querySelector('#stockTable');
+
+let normalStock = {
+Amaretto :30,
+Bourbon	:50,
+Campari:0,
+Gin:	30,
+Rum: 30,
+SweetVermouth: 15,
+DryVermouth: 15,
+Tequila:	80,
+Vodka:	70,
+}
+
+let currentStock = {
+  Amaretto :30,
+  Bourbon	:50,
+  Campari:0,
+  Gin:	30,
+  Rum: 30,
+  SweetVermouth: 15,
+  DryVermouth: 15,
+  Tequila:	80,
+  Vodka:	70,
+  }
+
+// Display current stock in a table
+function createTable(obj) {
+  stockTable.innerHTML='';
+  for (let i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      var tr = document.createElement('tr');
+      var td1= document.createElement('td');
+      td1.innerText = `${i}`;
+      var td2= document.createElement('td');
+      console.log(i)
+      td2.innerText = `${obj[i]}`;
+      td2.classList.add(i);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      stockTable.appendChild(tr);
+    }
+  }
+}
+
+// Save current stock to local storage
+function saveCurrent(obj, objName) {
+  localStorage.setItem(objName, JSON.stringify(obj));
+}
+createTable(normalStock,'normalStock');
+saveCurrent(currentStock,'currentStock');
+
 function getDrinksList() {
   for (i = 0; i < drinkIDs.length; i++) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIDs[i]}`)
@@ -153,8 +206,8 @@ updateStockCocktail ();
     {
       return;
     }
-  })
-}
+  }
+
 
 
 
