@@ -32,7 +32,17 @@ var cocktailsSold;
 
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
-
+let totalCocktailsSold = {
+  totalLongIslandSold : 0,
+  totalManhattanSold : 0,
+  totalMargaritaSold : 0,
+  totalGreyhoundSold : 0,
+  totalMartiniSold : 0,
+  totalBloodyMarySold : 0,
+  totalNegroniSold : 0,
+  totalAmarettoSourSold : 0,
+  totalTequilaFizzSold : 0,
+}
 
 
 function getDrinksList() {
@@ -72,7 +82,8 @@ function getCocktailIngredients(cocktail) {
     console.log(ing)
   }
 
-  localStorage.setItem(cocktailName, JSON.stringify(ing))
+  localStorage.setItem(cocktailName, JSON.stringify(ing));
+  localStorage.setItem('totalCocktailsSold', JSON.stringify(totalCocktailsSold));
 }
 
 function enterSales() {
@@ -160,18 +171,26 @@ updateStockCocktails();
 
 
 function updateTotalCocktailsSold() {
-  localStorage.getItem('totalCocktailsSold', cocktailsSold);
-  if ((typeof CocktailsSold) === object) {
+  
+  
+    let updatedLongIslandgsold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalLongIslandSold))+longIslandSold));
+    localStorage.setItem = ((totalCocktailsSold.totalLongIslandSold), JSON.stringify(updatedLongIslandgsold));
+    let  updatedManhattanSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalManhattanSold))+manhattanSold));
+    localStorage.setItem = ((totalCocktailsSold.totalManhattanSold), JSON.stringify(updatedManhattanSold));
+    let updatedMargaritaSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalMargaritaSold))+margaritaSold));
+    localStorage.setItem = ((totalCocktailsSold.totalMargaritaSold), JSON.stringify(updatedMargaritaSold));
+    let updatedGreyhoundSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalGreyhoundSold))+greyhoundSold));
+    localStorage.setItem = ((totalCocktailsSold.totalGreyhoundSold), JSON.stringify(updatedGreyhoundSold));
+    let updatedMartiniSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalMartiniSold))+martiniSold));
+    localStorage.setItem = ((totalCocktailsSold.totalMartiniSold), JSON.stringify(updatedMartiniSold));
+    let updatedBloodyMarySold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalBloodyMarySold))+bloodyMarySold));
+    localStorage.setItem = ((totalCocktailsSold.totalBloodyMarySold), JSON.stringify(updatedBloodyMarySold));
+    let updatedNegroniSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalNegroniSold))+negroniSold));
+    localStorage.setItem = ((totalCocktailsSold.totalNegroniSold), JSON.stringify(updatedNegroniSold));
+    let updatedAmarettoSourSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalAmarettoSourSold))+amarettoSourSold));
+    localStorage.setItem = ((totalCocktailsSold.totalAmarettoSourSold), JSON.stringify(updatedAmarettoSourSold));
+    let updatedTequilaFizzSold = ((JSON.parse(localStorage.getItem(totalCocktailsSold.totalTequilaFizzSold))+tequilaFizzSold));
+    localStorage.setItem = ((totalCocktailsSold.totalTequilaFizzSold), JSON.stringify(updatedTequilaFizzSold));
     
-
-    let totalCocktailsSold = [(totalLongIslandSold + longIslandSold), (totalManhattanSold + manhattanSold), (margaritaSold + totalMargaritaSold), (greyhoundSold + totalGreyhoundSold), (martiniSold + totalMartiniSold), (bloodyMarySold + totalBloodyMarySold), (negroniSold + totalNegroniSold, (amarettoSourSold + totalAmarettoSourSold), (tequilaFizzSold + totalTequilaFizzSold))];
-
-    localStorage.setItem(totalCocktailsSold, JSON.stringify(totalCocktailsSold));
   }
 
-  else {
-    cocktailsHaveBeenSold();
-    let totalCocktailsSold = [longIslandSold, manhattanSold, margaritaSold, greyhoundSold, martiniSold, bloodyMarySold, negroniSold, amarettoSourSold, tequilaFizzSold];
-    localStorage.setItem(totalCocktailsSold, totalCocktailsSold);
-  }
-}
