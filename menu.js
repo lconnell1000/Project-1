@@ -75,19 +75,18 @@ $(document).ready(function () {
         ing.push(cocktailIngredients);
         // console.log (cocktailIngredients)
         console.log(ing);
-      
-        drinkIDs.forEach (function (addIngredients){
-          var li = document.createElement ('li');
-          // var li = document.createElement ('li');
-          console.log (cocktailIngredients)
-          li.textContent = ing;
-          $(".ingredients").append (li);
 
-        // $(".ingredients").text(ing);
-        })
+        drinkIDs.forEach(function (addIngredients) {
+          var li = document.createElement("li");
+          // var li = document.createElement ('li');
+          console.log(cocktailIngredients);
+          li.textContent = ing;
+          $(".ingredients").append(li);
+
+          // $(".ingredients").text(ing);
+        });
         // $(".ingredients").text(ing);
       }
-    
     }
   }
 
