@@ -31,22 +31,7 @@ var totalTequilaFizzSold;
 
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
-
-
-
 let stockTable=document.querySelector('#stockTable');
-
-let normalStock = {
-Amaretto :30,
-Bourbon	:50,
-Campari:0,
-Gin:	30,
-Rum: 30,
-SweetVermouth: 15,
-DryVermouth: 15,
-Tequila:	80,
-Vodka:	70,
-}
 
 let currentStock = {
   Amaretto :30,

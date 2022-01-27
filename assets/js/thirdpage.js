@@ -16,16 +16,18 @@ var sales = document.querySelector('#sales');
 var netCash = document.querySelector('#netCash');
 var APIonecall
 var tempArray = [];
-let lastStock = {     //normal quantity for 20 serves of each
-  Amaretto :30,
-  Bourbon	:50,
-  Campari:0,
-  Gin:	30,
-  Rum: 30,
-  SweetVermouth: 15,
-  DryVermouth: 15,
-  Tequila:	80,
+let order = {};
+let normalStock = {     //normal quantity for 20 serves of each
+  Amaretto :	30,
+  Bourbon :	50,
+  Campari:	20,
+  Gin	:30,
+  Rum	:70,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
   Vodka:	70,
+  Cointreau:	10,
   }
 
 const stockPrice= {
@@ -65,6 +67,32 @@ let cocktailSale = {
 }
 
 const drinkPrices = 20
+
+const warm = {
+  Amaretto :	30,
+  Bourbon :	50,
+  Campari:	20,
+  Gin:	35,
+  Rum:	105,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
+  Vodka:	90,
+  Cointreau:	15,
+}
+
+const cold = {
+  Amaretto :	45,
+  Bourbon :	75,
+  Campari	:30,
+  Gin	:40,
+  Rum:	70,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
+  Vodka:	85,
+  Cointreau:	10,
+}
 
 // fetch city's lat and lon
 function fetchCoor() {
@@ -193,12 +221,46 @@ function drinkSug() {
   console.log(avg);
   if (avg>27) {
     drinkType.textContent = 'Warm drink';
+    buyStock(warm);
+
   }
   else if (17<=avg && avg <=27){
     drinkType.textContent = 'Both';
+    buyStock(normalStock);
   }
   else {
     drinkType.textContent = 'Cold drink';
+    buyStock(cold);
+  }
+
+}
+
+// suggest drink what to buy 
+function buyStock(option) {
+  for (let i in currentStock) {
+    property = `${currentStock[i]}`
+    order.property = option[i]-currentStock[i];
+    }
+  createTable(order);
+}
+
+// create order list;
+function createTable(obj) {
+  stockTable.innerHTML='';
+  for (let i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      var tr = document.createElement('tr');
+      var td1= document.createElement('td');
+      td1.innerText = `${i}`;
+      var td2= document.createElement('td');
+      console.log(i)
+      td2.innerText = `${obj[i]}`;
+      td2.classList.add(i);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      stockTable.appendChild(tr);
+    }
   }
 }
 
