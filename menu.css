@@ -38,6 +38,7 @@ html {
   text-align: center;
   border-radius: 5%;
   background: rgb(255, 255, 255, 0.75);
+  text-transform: lowercase;
 }
 
 .drink-section img {
@@ -90,9 +91,6 @@ ul {
   transition: transform 150 ms;
 }
 
-/* element.style {
-} */
-
 #launchModal {
   left: 45%;
 }
@@ -103,7 +101,7 @@ ul {
   border-color: rgb(255, 255, 255, 0.75);
   background-color: transparent;
   border-radius: 20px;
-  color: #whitesmoke;
+  color: whitesmoke;
 }
 
 h2.title {
@@ -113,10 +111,6 @@ h2.title {
 
 img {
   opacity: 0.8;
-}
-
-.modal-card-title {
-  color: ;
 }
 
 #over-18 {
