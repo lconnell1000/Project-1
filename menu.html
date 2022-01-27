@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu</title>
+    
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
@@ -15,15 +16,39 @@
       href="menu.css"
     />
    
-  </div>
+
   </head>
   <body>
-    <div class="tile-is-parent" id="navBar">
-    <div class="tile is-child box">
-        Nav Bar Goes Here
-    </div>
-</div>
-</div>
+    <div class="tile is ancestor">
+      <div class="tile is-12 is-vertical is-parent">
+          
+            <nav class = "navbar is-hidden" role="navigation" aria-label="main navigation">
+             
+        
+              <div >
+                <div >
+                  <a class="nav-item"
+                  href="https://www.health.gov.au/health-topics/alcohol/about-alcohol/alcohol-laws-in-australia"><strong> ?
+                  </strong>
+                </a>
+                  <a class = "nav-item" href="https://menu.html">
+                    Menu
+                  </a>
+                  <a class = "nav-item" href="https://currentstock.html">
+                    Current Stock
+                  </a>
+                  <a class = "nav-item" href="https://futurestock.html">
+                    Future Stock
+                  </a>
+                </div>
+              </div>
+            </nav>
+      
+
+      </div>
+
+  </div>
+
 <!-- MODAL -->
 <div class="button is-danger is-large modal-button" data-target="launchModal" id="launchModal">Enter Site</div>
  

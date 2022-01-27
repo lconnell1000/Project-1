@@ -39,7 +39,9 @@ $(document).ready(function () {
     let $h2 = $("<h2></h2>")
       .text(cocktail.drinks[0].strDrink)
       .addClass("title");
-    let $tileParent = $('<div class="tile is-child box drink-section"></div>');
+    let $tileParent = $(
+      '<div class="tile is-child box drink-section"></div>'
+    ).addClass("is-hidden");
     let $tileGrandparent = $(
       '<div class="tile is-4 is-vertical is-parent"></div>'
     );
@@ -87,11 +89,12 @@ $(document).ready(function () {
   // MODAL
   $("#launchModal").click(function () {
     $(".modal").addClass("is-active");
-    // $(".drink-section").addClass("is-active");
   });
 
   $(".modal-button-close").click(function () {
     $(".modal").removeClass("is-active");
+    $(".drink-section").removeClass("is-hidden");
+    $(".navbar").removeClass("is-hidden");
   });
 
   $("#closebtn").click(function () {
@@ -102,6 +105,7 @@ $(document).ready(function () {
     $(".modal").removeClass("is-active");
   });
 
+  // $(".drink-section").removeClass("is-hidden");
   //To-DO:
   // For loop for the cocktail cards to display drinkIDs array
   // Fix Modal - drink cards and nav bar are hidden until Enter Site is clicked and "yes" is clicked.

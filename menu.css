@@ -1,3 +1,25 @@
+.navbar {
+  background: transparent;
+  color: rgba(31, 29, 29, 0.35);
+  font-size: 30px;
+  padding-bottom: 5%;
+  margin-top: 1%;
+}
+
+.nav-item {
+  color: rgba(31, 29, 29, 0.6);
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.nav-item:hover {
+  color: black;
+  box-shadow: 0 0.4rem 1.4rem 0 #f14668;
+  transform: translateY (-0.1rem);
+  transition: transform 150 ms;
+  transform: scale(1.025);
+}
+
 html {
   background: url("background.jpg");
   -webkit-background-size: cover;
@@ -28,7 +50,7 @@ ul {
 }
 
 #navBar {
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 #age {
@@ -38,11 +60,23 @@ ul {
 
 #launchModal {
   position: absolute;
-  top: 100px;
+  top: 30%;
   left: 40px;
 }
 
 #parent {
   display: flex;
   flex-wrap: wrap;
+}
+
+.is-hidden {
+  display: none;
+}
+
+#launchModal:hover {
+  transform: scale(1.025);
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 #f14668;
+  transform: translateY (-0.1rem);
+  transition: transform 150 ms;
 }
