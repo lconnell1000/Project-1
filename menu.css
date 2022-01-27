@@ -13,11 +13,11 @@
 }
 
 .nav-item:hover {
-  color: black;
-  box-shadow: 0 0.4rem 1.4rem 0 #f14668;
-  transform: translateY (-0.1rem);
+  color: whitesmoke;
+  box-shadow: 0 0.4rem 1.4rem 0 #eeebeb;
+  /* transform: translateY (-0.1rem);
   transition: transform 150 ms;
-  transform: scale(1.025);
+  transform: scale(1.025); */
 }
 
 html {

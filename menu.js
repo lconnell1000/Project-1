@@ -95,6 +95,7 @@ $(document).ready(function () {
     $(".modal").removeClass("is-active");
     $(".drink-section").removeClass("is-hidden");
     $(".navbar").removeClass("is-hidden");
+    $("#launchModal").addClass("is-hidden");
   });
 
   $("#closebtn").click(function () {
@@ -104,10 +105,4 @@ $(document).ready(function () {
   $("#closecross").click(function () {
     $(".modal").removeClass("is-active");
   });
-
-  // $(".drink-section").removeClass("is-hidden");
-  //To-DO:
-  // For loop for the cocktail cards to display drinkIDs array
-  // Fix Modal - drink cards and nav bar are hidden until Enter Site is clicked and "yes" is clicked.
-  //fix drink cards styling - all currently in 1 card.
 });
