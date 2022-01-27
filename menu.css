@@ -1,3 +1,12 @@
+:root {
+  --background: #bdece6;
+  --maintextdark: #47a391;
+}
+
+* {
+  color: var(--maintextdark);
+}
+
 .navbar {
   background: transparent;
   color: rgba(31, 29, 29, 0.35);
@@ -15,9 +24,6 @@
 .nav-item:hover {
   color: whitesmoke;
   box-shadow: 0 0.4rem 1.4rem 0 #eeebeb;
-  /* transform: translateY (-0.1rem);
-  transition: transform 150 ms;
-  transform: scale(1.025); */
 }
 
 html {
@@ -59,7 +65,7 @@ ul {
 }
 
 #launchModal {
-  position: absolute;
+  position: center;
   top: 30%;
   left: 40px;
 }
@@ -76,7 +82,47 @@ ul {
 #launchModal:hover {
   transform: scale(1.025);
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0 #f14668;
+  color: whitesmoke;
+  border-color: rgb(255, 255, 255, 0.75);
+  background-color: transparent;
+  box-shadow: 0 0.4rem 1.4rem 0 #eeebeb;
   transform: translateY (-0.1rem);
   transition: transform 150 ms;
+}
+
+/* element.style {
+} */
+
+#launchModal {
+  left: 45%;
+}
+.button.is-large {
+  font-size: 2.5rem;
+}
+.button.is-danger {
+  border-color: rgb(255, 255, 255, 0.75);
+  background-color: transparent;
+  border-radius: 20px;
+  color: #whitesmoke;
+}
+
+h2.title {
+  color: var(--maintextdark);
+  text-transform: lowercase;
+}
+
+img {
+  opacity: 0.8;
+}
+
+.modal-card-title {
+  color: ;
+}
+
+#over-18 {
+  color: var(--maintextdark);
+}
+
+#yesBtn {
+  background-color: var(--maintextdark);
 }
