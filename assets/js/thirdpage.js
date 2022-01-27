@@ -14,6 +14,7 @@ var ing = document.querySelector('#ing');
 var drinkType = document.querySelector('#drinkType');
 var sales = document.querySelector('#sales');
 var netCash = document.querySelector('#netCash');
+var orderList = document.querySelector('#order');
 var APIonecall
 var tempArray = [];
 let order = {};
@@ -30,6 +31,19 @@ let normalStock = {     //normal quantity for 20 serves of each
   Cointreau:	10,
   }
 
+  let lastStock = {    
+    Amaretto :	30,          
+    Bourbon :	50,
+    Campari:	20,
+    Gin	:30,
+    Rum	:70,
+    SweetVermouth:	20,
+    DryVermouth:	15,
+    Tequila: 	30,
+    Vodka:	70,
+    Cointreau:	10,
+    }
+
 const stockPrice= {
   Amaretto :3.67,
   Bourbon	:8.42,
@@ -43,15 +57,16 @@ const stockPrice= {
 }
 
 let currentStock = {
-  Amaretto :10,
-  Bourbon	:20,
-  Campari:0,
-  Gin:	10,
-  Rum: 10,
-  SweetVermouth: 5,
-  DryVermouth: 5,
-  Tequila:	5,
-  Vodka:	5,
+  Amaretto :	20,
+  Bourbon :	10,
+  Campari:	20,
+  Gin	:15,
+  Rum	:20,
+  SweetVermouth:	4,
+  DryVermouth:	7,
+  Tequila: 	24,
+  Vodka:	56,
+  Cointreau:	4,
 }
 
 let cocktailSale = {
@@ -214,6 +229,7 @@ function ingCost(){
 // suggest drink type based on weather
 function drinkSug() {
   var sum=0;
+  var result
   for (var i=0; i<tempArray.length;i++) {
     sum += tempArray[i];
   }
@@ -222,31 +238,35 @@ function drinkSug() {
   if (avg>27) {
     drinkType.textContent = 'Warm drink';
     buyStock(warm);
+     result=warm;
 
   }
   else if (17<=avg && avg <=27){
     drinkType.textContent = 'Both';
     buyStock(normalStock);
+     result=normalStock;
   }
   else {
     drinkType.textContent = 'Cold drink';
     buyStock(cold);
+     result=cold;
   }
-
+  return result;
 }
 
 // suggest drink what to buy 
 function buyStock(option) {
   for (let i in currentStock) {
-    property = `${currentStock[i]}`
-    order.property = option[i]-currentStock[i];
+    property = `${i}`;
+    order[property] = option[i]-currentStock[i];
     }
+  console.log(order)
   createTable(order);
 }
 
 // create order list;
 function createTable(obj) {
-  stockTable.innerHTML='';
+  orderList.innerHTML='';
   for (let i in obj) {
     // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
     if (obj.hasOwnProperty(i)) {
@@ -255,13 +275,25 @@ function createTable(obj) {
       td1.innerText = `${i}`;
       var td2= document.createElement('td');
       console.log(i)
-      td2.innerText = `${obj[i]}`;
+      td2.innerText = `${obj[i]}` + 'oz';
       td2.classList.add(i);
       tr.appendChild(td1);
       tr.appendChild(td2);
-      stockTable.appendChild(tr);
+      orderList.appendChild(tr);
     }
   }
+}
+
+
+// Update current stock and save to local storage, 
+
+function update () {
+  var saveBtn = document.querySelector('#saveBtn');
+  saveBtn.addEventListener('click',function(){
+    localStorage.setItem('currentStock', JSON.stringify(drinkSug()));
+    localStorage.setItem('lastOrder', JSON.stringify(drinkSug()));
+  })
+  console.log('saved')
 }
 
 // innit
@@ -275,6 +307,7 @@ function innit() {
   closeModal.addEventListener('click',function(){
     modal.classList.remove('is-active');
   })
+  update()
 }
 
 
