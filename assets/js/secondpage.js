@@ -32,7 +32,7 @@ var totalTequilaFizzSold;
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
 
 
-
+var currentStock
 
 let stockTable=document.querySelector('#stockTable');
 
@@ -48,17 +48,26 @@ Tequila:	80,
 Vodka:	70,
 }
 
-let currentStock = {
-  Amaretto :30,
-  Bourbon	:50,
-  Campari:0,
-  Gin:	30,
-  Rum: 30,
-  SweetVermouth: 15,
-  DryVermouth: 15,
-  Tequila:	80,
-  Vodka:	70,
+function storage() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem("currentStock"));
+  // If search history were retrieved from localStorage, update 
+  if (storedHistory !== null) {
+  currentStock = a}
+  else {
+    currentStock = {
+      Amaretto :30,
+      Bourbon	:50,
+      Campari:0,
+      Gin:	30,
+      Rum: 30,
+      SweetVermouth: 15,
+      DryVermouth: 15,
+      Tequila:	80,
+      Vodka:	70,
+      }
   }
+}
 
 // Display current stock in a table
 function createTable(obj) {
