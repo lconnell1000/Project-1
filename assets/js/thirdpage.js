@@ -3,7 +3,7 @@ var displayDate= moment();
 var bestsell = document.querySelector('#bestsell')
 var weather = document.querySelector('#weather')
 var openModal = document.querySelector('#launchModal');
-var modal = document.querySelector('.modal');
+var modal = document.querySelector('#modal');
 var closeModal= document.querySelector('.modal-close')
 var closebtn= document.querySelector('#closebtn')
 var setDate = moment().day(0).format('ddd');
@@ -69,19 +69,9 @@ let currentStock = {
     Cointreau:	10,
     }
 
-let cocktailSale = {
-  longIsland : 10,
-  mojito : 20,
-  margarita : 10,
-  tequilaFizz : 10,
-  greyhound :10,
-  manhattan : 10,
-  bloodyMarry: 10,
-  negori: 10,
-  amaretto: 10,
-}
+let cocktailSale 
 
-const drinkPrices = 20
+const drinkPrices = 25
 
 const warm = {
   Amaretto :	30,
@@ -110,12 +100,35 @@ const cold = {
 }
 
 // Get current stock form local storage
-function loadSaves() {
+function loadCurrent() {
   // Get search history from localStorage
   var a = JSON.parse(localStorage.getItem('currentStock'))
   // If search history were retrieved from localStorage, update 
   if (a !== null) {
    currentStock = a;
+  }
+  
+}
+// Get last order from local storage to calculate cost of ingredients
+function lastOrder() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('lastOrder'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+   lastStock = a;
+  }
+  
+}
+
+// Get number of cocktail sold from local storage to calculate sale
+function getSale() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('totalCocktailsSold'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+    
+    cocktailSale = a;
+    console.log(a)
   }
 }
 
@@ -194,15 +207,57 @@ function getStock() {
   var stock = JSON.parse(localStorage.getItem("currentStock")); 
 }
 
+
+
 // Display best seller last week
 function bestSeller() {
-  let max = 'longIsland';
-  for (let i in cocktailSale) {
-    if (cocktailSale[max] < cocktailSale[i]){
-      max = `${i}`;
+  let best = [
+    {
+      name: 'Long Island',
+      sale :	cocktailSale["totalLongIslandSold"],
+    },
+    {
+      name: 'Manhattan',
+      sale :	cocktailSale["totalManhattanSold"],
+    },
+    {
+      name: 'Margarita',
+      sale	:cocktailSale["totalMargaritaSold"], 
+    },
+    {
+      name: 'Greyhound',
+      sale	:cocktailSale["totalGreyhoundSold"], 
+    },
+    {
+      name: 'Martini',
+      sale:	cocktailSale["totalMartiniSold"],
+    },
+    {
+      name: 'Bloody Mary',
+      sale:	cocktailSale["totalBloodyMarySold"],
+    },
+    {
+      name: 'Negroni',
+      sale:	cocktailSale["totalNegroniSold"],
+    },
+    {
+      name: 'Amaretto Sour',
+      sale: 	cocktailSale["totalAmarettoSourSold"],
+    },
+    {
+      name: 'Tequila Fizz',
+      sale:	cocktailSale["totalTequilaFizzSold"],
+    }
+  ]
+  {
+}
+  let max = best[0];
+  for (let i=0;i<best.length;i++) {
+    if (max.sale < best[i].sale){
+      max = best[i]
     }
   }
-  bestsell.textContent = max;
+  bestsell.textContent = max.name;
   return max
 }
 
@@ -219,7 +274,7 @@ function drinksale() {
   let earning =0;
   for (let i in cocktailSale) {
     let sold = cocktailSale[i]*drinkPrices;
-    earning += sold;
+    earning += Math.round(sold);
   }
   sales.textContent = '$'+earning;
   console.log(earning)
@@ -230,7 +285,7 @@ function ingCost(){
   let cost =0;
  for (let i in stockPrice ) {
   let sold = lastStock[i]-currentStock[i];
-  cost += sold*stockPrice[i];
+  cost += Math.round(sold*stockPrice[i]);
  }
  ing.textContent='$'+cost;
  return cost;
@@ -285,7 +340,7 @@ function createTable(obj) {
       td1.innerText = `${i}`;
       var td2= document.createElement('td');
       console.log(i)
-      td2.innerText = `${obj[i]}` + 'oz';
+      td2.innerText = Math.round(`${obj[i]}`) + 'oz';
       td2.classList.add(i);
       tr.appendChild(td1);
       tr.appendChild(td2);
@@ -302,14 +357,31 @@ function update () {
   saveBtn.addEventListener('click',function(){
     localStorage.setItem('currentStock', JSON.stringify(drinkSug()));
     localStorage.setItem('lastOrder', JSON.stringify(drinkSug()));
-  })
-  console.log('saved')
+    window.localStorage.removeItem('totalCocktailsSold');
+    localStorage.setItem('lastOrder', JSON.stringify(drinkSug()));
+    // anouce that new order list and new stock list are saved;
+    var saveAlert= document.querySelector('#saveAlert');
+    saveAlert.classList.add('is-active');
+    // Sets interval in variable
+    secondsLeft = 1;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      saveAlert.classList.remove('is-active');
+    }
+
+  }, 1000)
+  })  
 }
+
 
 // innit
 function innit() {
-  loadSaves();
-  bestSeller()
+  loadCurrent();
+  lastOrder() ;
+  getSale();
+  bestSeller();
   fetchCoor();
   launchModal();
   openModal.addEventListener('click',launchModal);
