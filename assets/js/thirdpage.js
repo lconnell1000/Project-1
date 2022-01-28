@@ -56,18 +56,18 @@ const stockPrice= {
   Vodka:	1.46,
 }
 
-let currentStock = {
-  Amaretto :	20,
-  Bourbon :	10,
-  Campari:	20,
-  Gin	:15,
-  Rum	:20,
-  SweetVermouth:	4,
-  DryVermouth:	7,
-  Tequila: 	24,
-  Vodka:	56,
-  Cointreau:	4,
-}
+let currentStock = {  
+    Amaretto :	30,          
+    Bourbon :	50,
+    Campari:	20,
+    Gin	:30,
+    Rum	:70,
+    SweetVermouth:	20,
+    DryVermouth:	15,
+    Tequila: 	30,
+    Vodka:	70,
+    Cointreau:	10,
+    }
 
 let cocktailSale = {
   longIsland : 10,
@@ -107,6 +107,16 @@ const cold = {
   Tequila: 	30,
   Vodka:	85,
   Cointreau:	10,
+}
+
+// Get current stock form local storage
+function loadSaves() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('currentStock'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+   currentStock = a;
+  }
 }
 
 // fetch city's lat and lon
@@ -171,12 +181,12 @@ function launchModal() {
 // redirect to current stock page
 function tocurrentstock() { 
   modal.classList.remove('is-active')
-  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
+  document.location= 'currentstock.html';
 }
 // redirect to menu page
 function toMenu() { 
   modal.classList.remove('is-active');
-  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
+  document.location= 'index.html';
 }
 
 // Get current stock from local storage
@@ -298,6 +308,7 @@ function update () {
 
 // innit
 function innit() {
+  loadSaves();
   bestSeller()
   fetchCoor();
   launchModal();
