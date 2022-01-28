@@ -1,14 +1,4 @@
-let drinkIDs = [
-  "11002",
-  "11008",
-  "11007",
-  "12362",
-  "17252",
-  "11728",
-  "11113",
-  "11003",
-  "13731 ",
-];
+
 var vodka;
 var rum;
 var teq;
@@ -112,6 +102,7 @@ enterSales();
 function updatestock() {
   $('#cocktail_form').submit(function (e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
     let longIslandSold = parseInt($('#long_island').val());
     let manhattanSold = parseInt($('#manhattan').val());
     let margaritaSold = parseInt($('#margarita').val());
