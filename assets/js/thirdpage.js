@@ -3,7 +3,7 @@ var displayDate= moment();
 var bestsell = document.querySelector('#bestsell')
 var weather = document.querySelector('#weather')
 var openModal = document.querySelector('#launchModal');
-var modal = document.querySelector('.modal');
+var modal = document.querySelector('#modal');
 var closeModal= document.querySelector('.modal-close')
 var closebtn= document.querySelector('#closebtn')
 var setDate = moment().day(0).format('ddd');
@@ -14,19 +14,36 @@ var ing = document.querySelector('#ing');
 var drinkType = document.querySelector('#drinkType');
 var sales = document.querySelector('#sales');
 var netCash = document.querySelector('#netCash');
+var orderList = document.querySelector('#order');
+var downloadBtn = document.querySelector('#downloadBtn');
 var APIonecall
 var tempArray = [];
-let lastStock = {     //normal quantity for 20 serves of each
-  Amaretto :30,
-  Bourbon	:50,
-  Campari:0,
-  Gin:	30,
-  Rum: 30,
-  SweetVermouth: 15,
-  DryVermouth: 15,
-  Tequila:	80,
+let order = {};
+let normalStock = {     //normal quantity for 20 serves of each
+  Amaretto :	30,
+  Bourbon :	50,
+  Campari:	20,
+  Gin	:30,
+  Rum	:70,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
   Vodka:	70,
+  Cointreau:	10,
   }
+
+  let lastStock = {    
+    Amaretto :	30,          
+    Bourbon :	50,
+    Campari:	20,
+    Gin	:30,
+    Rum	:70,
+    SweetVermouth:	20,
+    DryVermouth:	15,
+    Tequila: 	30,
+    Vodka:	70,
+    Cointreau:	10,
+    }
 
 const stockPrice= {
   Amaretto :3.67,
@@ -40,31 +57,81 @@ const stockPrice= {
   Vodka:	1.46,
 }
 
-let currentStock = {
-  Amaretto :10,
-  Bourbon	:20,
-  Campari:0,
-  Gin:	10,
-  Rum: 10,
-  SweetVermouth: 5,
-  DryVermouth: 5,
-  Tequila:	5,
-  Vodka:	5,
+let currentStock = {  
+    Amaretto :	30,          
+    Bourbon :	50,
+    Campari:	20,
+    Gin	:30,
+    Rum	:70,
+    SweetVermouth:	20,
+    DryVermouth:	15,
+    Tequila: 	30,
+    Vodka:	70,
+    Cointreau:	10,
+    }
+
+let cocktailSale 
+
+const drinkPrices = 25
+
+const warm = {
+  Amaretto :	30,
+  Bourbon :	50,
+  Campari:	20,
+  Gin:	35,
+  Rum:	105,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
+  Vodka:	90,
+  Cointreau:	15,
 }
 
-let cocktailSale = {
-  longIsland : 10,
-  mojito : 20,
-  margarita : 10,
-  tequilaFizz : 10,
-  greyhound :10,
-  manhattan : 10,
-  bloodyMarry: 10,
-  negori: 10,
-  amaretto: 10,
+const cold = {
+  Amaretto :	45,
+  Bourbon :	75,
+  Campari	:30,
+  Gin	:40,
+  Rum:	70,
+  SweetVermouth:	20,
+  DryVermouth:	15,
+  Tequila: 	30,
+  Vodka:	85,
+  Cointreau:	10,
 }
 
-const drinkPrices = 20
+// Get current stock form local storage
+function loadCurrent() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('currentStock'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+   currentStock = a;
+  }
+  
+}
+// Get last order from local storage to calculate cost of ingredients
+function lastOrder() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('lastOrder'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+   lastStock = a;
+  }
+  
+}
+
+// Get number of cocktail sold from local storage to calculate sale
+function getSale() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('totalCocktailsSold'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+    
+    cocktailSale = a;
+    console.log(a)
+  }
+}
 
 // fetch city's lat and lon
 function fetchCoor() {
@@ -128,12 +195,12 @@ function launchModal() {
 // redirect to current stock page
 function tocurrentstock() { 
   modal.classList.remove('is-active')
-  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
+  document.location= 'currentstock.html';
 }
 // redirect to menu page
 function toMenu() { 
   modal.classList.remove('is-active');
-  document.location= 'https://juvenexaesthetics.com.au/wp-content/uploads/2020/05/test.png';
+  document.location= 'index.html';
 }
 
 // Get current stock from local storage
@@ -141,15 +208,57 @@ function getStock() {
   var stock = JSON.parse(localStorage.getItem("currentStock")); 
 }
 
+
+
 // Display best seller last week
 function bestSeller() {
-  let max = 'longIsland';
-  for (let i in cocktailSale) {
-    if (cocktailSale[max] < cocktailSale[i]){
-      max = `${i}`;
+  let best = [
+    {
+      name: 'Long Island',
+      sale :	cocktailSale["totalLongIslandSold"],
+    },
+    {
+      name: 'Manhattan',
+      sale :	cocktailSale["totalManhattanSold"],
+    },
+    {
+      name: 'Margarita',
+      sale	:cocktailSale["totalMargaritaSold"], 
+    },
+    {
+      name: 'Greyhound',
+      sale	:cocktailSale["totalGreyhoundSold"], 
+    },
+    {
+      name: 'Martini',
+      sale:	cocktailSale["totalMartiniSold"],
+    },
+    {
+      name: 'Bloody Mary',
+      sale:	cocktailSale["totalBloodyMarySold"],
+    },
+    {
+      name: 'Negroni',
+      sale:	cocktailSale["totalNegroniSold"],
+    },
+    {
+      name: 'Amaretto Sour',
+      sale: 	cocktailSale["totalAmarettoSourSold"],
+    },
+    {
+      name: 'Tequila Fizz',
+      sale:	cocktailSale["totalTequilaFizzSold"],
+    }
+  ]
+  {
+}
+  let max = best[0];
+  for (let i=0;i<best.length;i++) {
+    if (max.sale < best[i].sale){
+      max = best[i]
     }
   }
-  bestsell.textContent = max;
+  bestsell.textContent = max.name;
   return max
 }
 
@@ -166,7 +275,7 @@ function drinksale() {
   let earning =0;
   for (let i in cocktailSale) {
     let sold = cocktailSale[i]*drinkPrices;
-    earning += sold;
+    earning += Math.round(sold);
   }
   sales.textContent = '$'+earning;
   console.log(earning)
@@ -177,7 +286,7 @@ function ingCost(){
   let cost =0;
  for (let i in stockPrice ) {
   let sold = lastStock[i]-currentStock[i];
-  cost += sold*stockPrice[i];
+  cost += Math.round(sold*stockPrice[i]);
  }
  ing.textContent='$'+cost;
  return cost;
@@ -186,6 +295,7 @@ function ingCost(){
 // suggest drink type based on weather
 function drinkSug() {
   var sum=0;
+  var result
   for (var i=0; i<tempArray.length;i++) {
     sum += tempArray[i];
   }
@@ -193,18 +303,115 @@ function drinkSug() {
   console.log(avg);
   if (avg>27) {
     drinkType.textContent = 'Warm drink';
+    buyStock(warm);
+     result=warm;
+
   }
   else if (17<=avg && avg <=27){
     drinkType.textContent = 'Both';
+    buyStock(normalStock);
+     result=normalStock;
   }
   else {
     drinkType.textContent = 'Cold drink';
+    buyStock(cold);
+     result=cold;
   }
+  return result;
+}
+
+// suggest drink what to buy 
+function buyStock(option) {
+  for (let i in currentStock) {
+    property = `${i}`;
+    order[property] = option[i]-currentStock[i];
+    }
+  console.log(order)
+  createTable(order);
+}
+
+// create order list;
+function createTable(obj) {
+  orderList.innerHTML='';
+  for (let i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      var tr = document.createElement('tr');
+      var td1= document.createElement('td');
+      td1.innerText = `${i}`;
+      var td2= document.createElement('td');
+      console.log(i)
+      td2.innerText = Math.round(`${obj[i]}`) + 'oz';
+      td2.classList.add(i);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      orderList.appendChild(tr);
+    }
+  }
+}
+
+
+// Update current stock and save to local storage, 
+
+function update () {
+  var saveBtn = document.querySelector('#saveBtn');
+  saveBtn.addEventListener('click',function(){
+    localStorage.setItem('currentStock', JSON.stringify(drinkSug()));
+    localStorage.setItem('lastOrder', JSON.stringify(drinkSug()));
+    window.localStorage.removeItem('totalCocktailsSold');
+    localStorage.setItem('lastOrder', JSON.stringify(drinkSug()));
+    // anouce that new order list and new stock list are saved;
+    var saveAlert= document.querySelector('#saveAlert');
+    saveAlert.classList.add('is-active');
+    // Sets interval in variable
+    secondsLeft = 1;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      saveAlert.classList.remove('is-active');
+    }
+
+  }, 1000)
+  })  
+}
+
+// Download order as csv file
+function download_table_as_csv(table_id, separator = ',') {
+  // Select rows from table_id
+  var rows = document.querySelectorAll('#' + table_id + ' tr');
+  // Construct csv
+  var csv = [];
+  for (var i = 0; i < rows.length; i++) {
+      var row = [], cols = rows[i].querySelectorAll('td, th');
+      for (var j = 0; j < cols.length; j++) {
+          // Clean innertext to remove multiple spaces and jumpline (break csv)
+          var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+          data = data.replace(/"/g, '""');
+          // Push escaped string
+          row.push('"' + data + '"');
+      }
+      csv.push(row.join(separator));
+  }
+  var csv_string = csv.join('\n');
+  // Download it
+  var filename =  table_id + '_' + new Date().toLocaleDateString() + '.csv';
+  var link = document.createElement('a');
+  link.style.display = 'none';
+  link.setAttribute('target', '_blank');
+  link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+  link.setAttribute('download', filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // innit
 function innit() {
-  bestSeller()
+  loadCurrent();
+  lastOrder() ;
+  getSale();
+  bestSeller();
   fetchCoor();
   launchModal();
   openModal.addEventListener('click',launchModal);
@@ -213,6 +420,9 @@ function innit() {
   closeModal.addEventListener('click',function(){
     modal.classList.remove('is-active');
   })
+  update()
+  downloadBtn.addEventListener('click',function(){
+    download_table_as_csv('order')});
 }
 
 

@@ -22,7 +22,7 @@
     
         <div id="navbar" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="./menu.html">
+            <a class="navbar-item" href="./index.html">
               Menu
             </a>
             <a class="navbar-item" href="./currentstock.html">
@@ -78,7 +78,7 @@
                     </tr>
                   </table>
                 </div>
-                <div class="tile is-child box">
+                <div class="tile is-child box" id='orderPlan'>
                   <p class="title">Suggestion</p>
                   <table class="table">
                     <tr>
@@ -87,37 +87,14 @@
                     </tr>
                   </table>
                   <p class="title">What to buy</p>
-                  <table>
-                    <tr>
-                      <th></th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td ></td>
-                    </tr>
-                    <tr>
-                      <th></th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td ></td>
-                    </tr>
-                  </table>
+                  <table class="table" id="order"></table>
+                  <button class="button" id="saveBtn">Accept&Save</button>
+                  <button class="button" id="downloadBtn" >Download</button>
                 </div>
             </article>
             
         </section>
-        <!-- modal -->
+        <!-- modal alert if entering not on sunday-->
         <div id="modal" class="modal">
           <div class="modal-background"></div>
           <div class="modal-content">
@@ -138,6 +115,17 @@
             </div>
           </div>
           <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+         <!-- modal alert when press save button-->
+         <div id="saveAlert" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+             <p class="customAlert">
+                 <strong>Saved</strong> 
+              </p>
+            </div>
+          </div>
         </div>
 
         <button class="button is-danger is-large" id="launchModal">Show Modal</button>
