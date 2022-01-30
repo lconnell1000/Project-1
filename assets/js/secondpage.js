@@ -45,6 +45,42 @@ let currentStock = {
   Cointreau: 15,
 };
 
+// Get current stock form local storage
+function loadCurrent() {
+  // Get search history from localStorage
+  var a = JSON.parse(localStorage.getItem('currentStock'))
+  // If search history were retrieved from localStorage, update 
+  if (a !== null) {
+   currentStock = a;
+  }
+}
+
+loadCurrent();
+
+// create table of current stock
+function createTable(obj) {
+  loadCurrent();
+  var stockTable= document.querySelector('#stockTable')
+  stockTable.innerHTML='';
+  for (let i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      var tr = document.createElement('tr');
+      var td1= document.createElement('td');
+      td1.innerText = `${i}`;
+      var td2= document.createElement('td');
+      console.log(i)
+      td2.innerText = Math.round(`${obj[i]}`) + 'oz';
+      td2.classList.add(i);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      stockTable.appendChild(tr);
+    }
+  }
+}
+
+createTable(currentStock);
+
 let totalCocktailsSold = {
   totalLongIslandSold: 0,
   totalManhattanSold: 0,
@@ -148,7 +184,7 @@ function updatestock() {
         DryVermouth: newdryVermouthStock,
         Tequila: newTeqStock,
         Vodka: newVodkaStock,
-        cointreau: newCointreauStock,
+        Cointreau: newCointreauStock,
       };
       localStorage.setItem('currentStock', JSON.stringify(newStock));
 
@@ -190,6 +226,7 @@ function updatestock() {
     {
 
     }
+    createTable(currentStock);
   });
 }
 
