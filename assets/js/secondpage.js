@@ -1,4 +1,3 @@
-
 var vodka;
 var rum;
 var teq;
@@ -30,7 +29,17 @@ var amarettoSour;
 var tequilaFizz;
 
 let spirits = [vodka, rum, teq, gin, bourbon, amaretto, sweetVermouth];
-let cocktails = [longIsland, manhattan, margarita, greyhound, martini, bloodyMary, negroni, amarettoSour, tequilaFizz];
+let cocktails = [
+  longIsland,
+  manhattan,
+  margarita,
+  greyhound,
+  martini,
+  bloodyMary,
+  negroni,
+  amarettoSour,
+  tequilaFizz,
+];
 
 let currentStock = {
   Amaretto: 30,
@@ -48,10 +57,10 @@ let currentStock = {
 // Get current stock form local storage
 function loadCurrent() {
   // Get search history from localStorage
-  var a = JSON.parse(localStorage.getItem('currentStock'))
-  // If search history were retrieved from localStorage, update 
+  var a = JSON.parse(localStorage.getItem("currentStock"));
+  // If search history were retrieved from localStorage, update
   if (a !== null) {
-   currentStock = a;
+    currentStock = a;
   }
 }
 
@@ -60,17 +69,17 @@ loadCurrent();
 // create table of current stock
 function createTable(obj) {
   loadCurrent();
-  var stockTable= document.querySelector('#stockTable')
-  stockTable.innerHTML='';
+  var stockTable = document.querySelector("#stockTable");
+  stockTable.innerHTML = "";
   for (let i in obj) {
     // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
     if (obj.hasOwnProperty(i)) {
-      var tr = document.createElement('tr');
-      var td1= document.createElement('td');
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
       td1.innerText = `${i}`;
-      var td2= document.createElement('td');
-      console.log(i)
-      td2.innerText = Math.round(`${obj[i]}`) + 'oz';
+      var td2 = document.createElement("td");
+      console.log(i);
+      td2.innerText = Math.round(`${obj[i]}`) + "oz";
       td2.classList.add(i);
       tr.appendChild(td1);
       tr.appendChild(td2);
@@ -91,7 +100,7 @@ let totalCocktailsSold = {
   totalNegroniSold: 0,
   totalAmarettoSourSold: 0,
   totalTequilaFizzSold: 0,
-}
+};
 
 function enterSales() {
   $("#lanuchModalSales").click(function () {
@@ -99,23 +108,29 @@ function enterSales() {
   });
 
   $("#entersales").click(function () {
-
-    let testIfStockSet = JSON.parse(localStorage.getItem('currentStock'))
+    let testIfStockSet = JSON.parse(localStorage.getItem("currentStock"));
     if (testIfStockSet == null || testIfStockSet == currentStock) {
-      localStorage.setItem('currentStock', JSON.stringify(currentStock));
+      localStorage.setItem("currentStock", JSON.stringify(currentStock));
     }
-    let testIfCocktailsSold = JSON.parse(localStorage.getItem('totalCocktailsSold'));
-    if (testIfCocktailsSold == null || testIfCocktailsSold == totalCocktailsSold) {
-      localStorage.setItem('totalCocktailsSold', JSON.stringify(totalCocktailsSold));
+    let testIfCocktailsSold = JSON.parse(
+      localStorage.getItem("totalCocktailsSold")
+    );
+    if (
+      testIfCocktailsSold == null ||
+      testIfCocktailsSold == totalCocktailsSold
+    ) {
+      localStorage.setItem(
+        "totalCocktailsSold",
+        JSON.stringify(totalCocktailsSold)
+      );
     }
     updatestock();
+    loadCurrent();
     $(".modal").removeClass("is-active");
   });
 }
 
 enterSales();
-
-
 
 // function convertFractions() {
 //   let NegroniIngredients = JSON.parse(localStorage.getItem ('Negroni'));
@@ -132,47 +147,68 @@ enterSales();
 //   console.log(newNegroniIngredients);
 //   }
 
-
 // convertFractions();
 
 function updatestock() {
-  $('#cocktail_form').submit(function (e) {
+  $("#cocktail_form").submit(function (e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-    let longIslandSold = parseInt($('#long_island').val());
-    let manhattanSold = parseInt($('#manhattan').val());
-    let margaritaSold = parseInt($('#margarita').val());
-    let greyhoundSold = parseInt($('#greyhound').val());
-    let martiniSold = parseInt($('#martini').val());
-    let bloodyMarySold = parseInt($('#bloody_mary').val());
-    let negroniSold = parseInt($('#negroni').val());
-    let amarettoSourSold = parseInt($('#amaretto_sour').val());
-    let tequilaFizzSold = parseInt($('#tequila_fizz').val());
+    let longIslandSold = parseInt($("#long_island").val());
+    let manhattanSold = parseInt($("#manhattan").val());
+    let margaritaSold = parseInt($("#margarita").val());
+    let greyhoundSold = parseInt($("#greyhound").val());
+    let martiniSold = parseInt($("#martini").val());
+    let bloodyMarySold = parseInt($("#bloody_mary").val());
+    let negroniSold = parseInt($("#negroni").val());
+    let amarettoSourSold = parseInt($("#amaretto_sour").val());
+    let tequilaFizzSold = parseInt($("#tequila_fizz").val());
 
+    var currentLevels = JSON.parse(localStorage.getItem("currentStock"));
+    var currentSold = JSON.parse(localStorage.getItem("totalCocktailsSold"));
+    if (
+      longIslandSold >= 0 &&
+      greyhoundSold >= 0 &&
+      bloodyMarySold >= 0 &&
+      manhattanSold >= 0 &&
+      margaritaSold >= 0 &&
+      martiniSold >= 0 &&
+      negroniSold >= 0 &&
+      amarettoSourSold >= 0 &&
+      tequilaFizzSold >= 0
+    ) {
+      let newVodkaStock =
+        currentLevels.Vodka -
+        0.5 * longIslandSold -
+        1.5 * bloodyMarySold -
+        1.5 * greyhoundSold;
 
+      let newRumStock = currentLevels.Rum - 0.5 * longIslandSold;
 
-    var currentLevels = JSON.parse(localStorage.getItem('currentStock'));
-    var currentSold = JSON.parse(localStorage.getItem('totalCocktailsSold'));
-    if (longIslandSold >= 0 && greyhoundSold >= 0 && bloodyMarySold >= 0 && manhattanSold >= 0 && margaritaSold >= 0 && martiniSold >= 0 && negroniSold >= 0 && amarettoSourSold >= 0 && tequilaFizzSold >= 0) {
-      let newVodkaStock = (currentLevels.Vodka) - (0.5 * (longIslandSold)) - (1.5 * (bloodyMarySold)) - (1.5 * (greyhoundSold));
+      let newTeqStock =
+        currentLevels.Tequila -
+        0.5 * longIslandSold -
+        1.5 * margaritaSold -
+        2 * tequilaFizzSold;
 
-      let newRumStock = (currentLevels.Rum) - (0.5 * (longIslandSold));
+      let newGinStock =
+        currentLevels.Gin -
+        0.5 * longIslandSold -
+        negroniSold -
+        (5 / 3) * martiniSold;
 
-      let newTeqStock = (currentLevels.Tequila) - (0.5 * (longIslandSold)) - (1.5 * (margaritaSold)) - (2 * (tequilaFizzSold));
+      let newBourbonStock = currentLevels.Bourbon - 2.5 * manhattanSold;
 
-      let newGinStock = (currentLevels.Gin) - (0.5 * (longIslandSold)) - (negroniSold) - ((5 / 3) * (martiniSold));
+      let newAmarettoStock = currentLevels.Amaretto - 1.5 * amarettoSourSold;
 
-      let newBourbonStock = (currentLevels.Bourbon) - (2.5 * (manhattanSold));
+      let newSweetVermouthStock =
+        currentLevels.SweetVermouth - 0.75 * manhattanSold - negroniSold;
 
-      let newAmarettoStock = (currentLevels.Amaretto) - (1.5 * (amarettoSourSold));
+      let newdryVermouthStock =
+        currentLevels.DryVermouth - (1 / 3) * martiniSold;
 
-      let newSweetVermouthStock = (currentLevels.SweetVermouth) - ((0.75) * (manhattanSold)) - (negroniSold);
+      let newCointreauStock = currentLevels.Cointreau - 0.5 * margaritaSold;
 
-      let newdryVermouthStock = (currentLevels.DryVermouth) - ((1 / 3) * (martiniSold));
-
-      let newCointreauStock = (currentLevels.Cointreau) - ((0.5) * (margaritaSold));
-
-      let newCampariStock = (currentLevels.Campari) - (negroniSold);
+      let newCampariStock = currentLevels.Campari - negroniSold;
 
       let newStock = {
         Amaretto: newAmarettoStock,
@@ -186,28 +222,29 @@ function updatestock() {
         Vodka: newVodkaStock,
         Cointreau: newCointreauStock,
       };
-      localStorage.setItem('currentStock', JSON.stringify(newStock));
+      localStorage.setItem("currentStock", JSON.stringify(newStock));
 
+      let updatedLongIslandsold =
+        currentSold.totalLongIslandSold + longIslandSold;
 
-     
+      let updatedManhattanSold = currentSold.totalManhattanSold + manhattanSold;
 
-      let updatedLongIslandsold = ((currentSold.totalLongIslandSold) + (longIslandSold));
+      let updatedMargaritaSold = currentSold.totalMargaritaSold + margaritaSold;
 
-      let updatedManhattanSold = ((currentSold.totalManhattanSold) + (manhattanSold));
+      let updatedGreyhoundSold = currentSold.totalGreyhoundSold + greyhoundSold;
 
-      let updatedMargaritaSold = ((currentSold.totalMargaritaSold) + (margaritaSold));
+      let updatedMartiniSold = currentSold.totalMartiniSold + martiniSold;
 
-      let updatedGreyhoundSold = ((currentSold.totalGreyhoundSold) + (greyhoundSold));
+      let updatedBloodyMarySold =
+        currentSold.totalBloodyMarySold + bloodyMarySold;
 
-      let updatedMartiniSold = ((currentSold.totalMartiniSold) + (martiniSold));
+      let updatedNegroniSold = currentSold.totalNegroniSold + negroniSold;
 
-      let updatedBloodyMarySold = ((currentSold.totalBloodyMarySold) + (bloodyMarySold));
+      let updatedAmarettoSourSold =
+        currentSold.totalAmarettoSourSold + amarettoSourSold;
 
-      let updatedNegroniSold = ((currentSold.totalNegroniSold) + (negroniSold));
-
-      let updatedAmarettoSourSold = ((currentSold.totalAmarettoSourSold) + (amarettoSourSold));
-
-      let updatedTequilaFizzSold = ((currentSold.totalTequilaFizzSold) + (tequilaFizzSold));
+      let updatedTequilaFizzSold =
+        currentSold.totalTequilaFizzSold + tequilaFizzSold;
 
       let updatedCocktailsSold = {
         totalLongIslandSold: updatedLongIslandsold,
@@ -219,29 +256,14 @@ function updatestock() {
         totalNegroniSold: updatedNegroniSold,
         totalAmarettoSourSold: updatedAmarettoSourSold,
         totalTequilaFizzSold: updatedTequilaFizzSold,
-      }
-      localStorage.setItem('totalCocktailsSold', JSON.stringify(updatedCocktailsSold));
-    }
-    else (console.log('error, please make sure all cocktails are 0 or greater'));
+      };
+      localStorage.setItem(
+        "totalCocktailsSold",
+        JSON.stringify(updatedCocktailsSold)
+      );
+    } else console.log("error, please make sure all cocktails are 0 or greater");
     {
-
     }
     createTable(currentStock);
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
