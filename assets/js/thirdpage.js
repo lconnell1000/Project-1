@@ -20,29 +20,29 @@ var APIonecall
 var tempArray = [];
 let order = {};
 let normalStock = {     //normal quantity for 20 serves of each
-  Amaretto :	30,
-  Bourbon :	50,
-  Campari:	20,
-  Gin	:30,
-  Rum	:70,
-  SweetVermouth:	20,
-  DryVermouth:	15,
-  Tequila: 	30,
-  Vodka:	70,
-  Cointreau:	10,
+  Amaretto: 30,
+  Bourbon: 50,
+  Campari: 20,
+  Gin: 30,
+  Rum: 30,
+  SweetVermouth: 15,
+  DryVermouth: 15,
+  Tequila: 80,
+  Vodka: 70,
+  Cointreau: 15,
   }
 
   let lastStock = {    
-    Amaretto :	30,          
-    Bourbon :	50,
-    Campari:	20,
-    Gin	:30,
-    Rum	:70,
-    SweetVermouth:	20,
-    DryVermouth:	15,
-    Tequila: 	30,
-    Vodka:	70,
-    Cointreau:	10,
+    Amaretto: 30,
+    Bourbon: 50,
+    Campari: 20,
+    Gin: 30,
+    Rum: 30,
+    SweetVermouth: 15,
+    DryVermouth: 15,
+    Tequila: 80,
+    Vodka: 70,
+    Cointreau: 15,
     }
 
 const stockPrice= {
