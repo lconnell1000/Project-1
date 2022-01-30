@@ -4,33 +4,104 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  text-transform: lowercase;
 }
 
-.tile{
-    background: rgba(255, 255, 255, 0.089);
+:root {
+  --background: #bdece6;
+  --maintextdark: #47a391;
+}
+
+* {
+  color: black;
+  font-size: 20px;
+}
+
+a.nav-item {
+  font-size: 20px;
+}
+
+#navBar {
+  padding-bottom: 100px;
+}
+
+.navbar {
+  background: transparent;
+  color: rgba(31, 29, 29, 0.35);
+  padding-bottom: 5%;
+  margin-top: 1%;
+}
+
+.nav-item {
+  color: rgba(31, 29, 29, 0.6);
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.nav-item:hover {
+  color: whitesmoke;
+  box-shadow: 0 0.4rem 1.4rem 0 #eeebeb;
+}
+
+.tile {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 form label {
-    display: inline-block;
-    width: 100px;
-  }
-  
-  form div {
-    margin-bottom: 10px;
-  }
-  
-  .error {
-    color: red;
-    margin-left: 5px;
-  }
-  
-  label.error {
-    display: inline;
-  }
+  display: inline-block;
+  width: 100px;
+}
 
-  table {
-    width:100%
-  }
-  .navbar-menu {
-    margin-left: 38%;
-} 
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
+}
+
+table {
+  width: 100%;
+}
+.navbar-menu {
+  margin-left: 38%;
+}
+
+p.title {
+  color: var(--maintextdark);
+}
+
+#lanuchModalSales {
+  border-color: rgb(255, 255, 255, 0.75);
+  background-color: transparent;
+  border-radius: 20px;
+  color: whitesmoke;
+}
+
+#lanuchModalSales:hover {
+  transform: scale(1.025);
+  cursor: pointer;
+  color: whitesmoke;
+  border-color: rgb(255, 255, 255, 0.75);
+  background-color: transparent;
+  box-shadow: 0 0.4rem 1.4rem 0 #eeebeb;
+  transform: translateY (-0.1rem);
+  transition: transform 150 ms;
+}
+
+.button.is-large {
+  font-size: 1.5rem;
+}
+
+.table {
+  background-color: transparent;
+}
+
+#weather-box {
+  color: whitesmoke;
+}

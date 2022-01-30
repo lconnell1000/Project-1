@@ -2,6 +2,13 @@
     margin-left:36%;
 } 
 
+:root {
+    --background: #bdece6;
+    --maintextdark: #47a391;
+  }
+
+
+
 main{
    background-image: url('background.jpg') ;
 }
@@ -23,5 +30,12 @@ table {
 img {
     max-width: 5rem;
     max-height: 5rem;
+}
+
+p#bestsell.title {
+    color: burlywood; 
+
+.tile.is-4.is-child.box {
+    background-color: rgb(228, 248, 245, 0.1);
 }
 
