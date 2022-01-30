@@ -36,11 +36,12 @@ $(document).ready(function () {
   }
 
   function displayCocktail(cocktail) {
-    getCocktailIngredients(cocktail);
     let $h2 = $("<h2></h2>")
       .text(cocktail.drinks[0].strDrink)
       .addClass("title");
-    let $tileParent = $('<div class="tile is-child box drink-section"></div>');
+    let $tileParent = $(
+      '<div class="tile is-child box drink-section"></div>'
+    ).addClass("is-hidden");
     let $tileGrandparent = $(
       '<div class="tile is-4 is-vertical is-parent"></div>'
     );
@@ -48,46 +49,38 @@ $(document).ready(function () {
     let instructions = $("<p></p>")
       .text(cocktail.drinks[0].strInstructions)
       .addClass("instructions");
-    let ingredients = $("<ul>").addClass("ingredients").text("TEST");
 
     $tileParent.append($h2);
     $tileParent.append(image);
-    $tileParent.append(ingredients);
-
+    getCocktailIngredients(cocktail);
+    $tileParent.append(getCocktailIngredients(cocktail));
     $tileParent.append(instructions);
     $tileGrandparent.append($tileParent);
     $("#parent").append($tileGrandparent);
 
     function getCocktailIngredients(cocktail) {
       let cocktailName = cocktail.drinks[0].strDrink;
-      console.log(cocktailName);
       let ing = [];
+      let ingredients = $("<ul>").addClass("ingredients");
       for (let i = 1; i < 16; i++) {
         if (cocktail.drinks[0][`strMeasure${i}`] == null) {
           //if no ingredient, break loop and stop adding to list
+          console.log(i);
           break;
         }
-
-        const cocktailIngredients =
+        let cocktailIngredients =
           cocktail.drinks[0][`strMeasure${i}`] +
           " " +
           cocktail.drinks[0][`strIngredient${i}`];
         ing.push(cocktailIngredients);
-        // console.log (cocktailIngredients)
         console.log(ing);
-      
-        drinkIDs.forEach (function (addIngredients){
-          var li = document.createElement ('li');
-          // var li = document.createElement ('li');
-          console.log (cocktailIngredients)
-          li.textContent = ing;
-          $(".ingredients").append (li);
-
-        // $(".ingredients").text(ing);
-        })
-        // $(".ingredients").text(ing);
       }
-    
+      for (let i = 0; i < ing.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = ing[i];
+        ingredients.append(li);
+      }
+      return ingredients; //new
     }
   }
 
@@ -96,11 +89,13 @@ $(document).ready(function () {
   // MODAL
   $("#launchModal").click(function () {
     $(".modal").addClass("is-active");
-    // $(".drink-section").addClass("is-active");
   });
 
   $(".modal-button-close").click(function () {
     $(".modal").removeClass("is-active");
+    $(".drink-section").removeClass("is-hidden");
+    $(".navbar").removeClass("is-hidden");
+    $("#launchModal").addClass("is-hidden");
   });
 
   $("#closebtn").click(function () {
@@ -110,9 +105,4 @@ $(document).ready(function () {
   $("#closecross").click(function () {
     $(".modal").removeClass("is-active");
   });
-
-  //To-DO:
-  // For loop for the cocktail cards to display drinkIDs array
-  // Fix Modal - drink cards and nav bar are hidden until Enter Site is clicked and "yes" is clicked.
-  //fix drink cards styling - all currently in 1 card.
 });
