@@ -72,7 +72,7 @@ let currentStock = {
 
 let cocktailSale 
 
-const drinkPrices = 25
+const drinkPrices = 20
 
 const warm = {
   Amaretto :	30,
@@ -212,6 +212,7 @@ function getStock() {
 
 // Display best seller last week
 function bestSeller() {
+  if (cocktailSale !== undefined) {
   let best = [
     {
       name: 'Long Island',
@@ -250,8 +251,6 @@ function bestSeller() {
       sale:	cocktailSale["totalTequilaFizzSold"],
     }
   ]
-  {
-}
   let max = best[0];
   for (let i=0;i<best.length;i++) {
     if (max.sale < best[i].sale){
@@ -260,6 +259,8 @@ function bestSeller() {
   }
   bestsell.textContent = max.name;
   return max
+}
+  else {return max= "N/A"}
 }
 
 
@@ -414,7 +415,6 @@ function innit() {
   bestSeller();
   fetchCoor();
   launchModal();
-  openModal.addEventListener('click',launchModal);
   returnMenu.addEventListener('click', toMenu);
   returnCurrentStock.addEventListener('click', tocurrentstock);
   closeModal.addEventListener('click',function(){
