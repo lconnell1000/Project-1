@@ -37,7 +37,7 @@ $(document).ready(function () {
 
   function displayCocktail(cocktail) {
     let $h2 = $("<h2></h2>")
-      .text(cocktail.drinks[0].strDrink)
+      .text(cocktail.drinks[0].strDrink + " - $20")
       .addClass("title");
     let $tileParent = $(
       '<div class="tile is-child box drink-section"></div>'
