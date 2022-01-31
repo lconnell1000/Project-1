@@ -10,7 +10,7 @@
 
 * The current stock page will show how much of each spirit is in stock, and allow you to enter in how many of each cocktail was sold that day.
 
-* the future stock page will show the most popular cocktail, the upcoming weather, a cash flow tables and then give a suggestion on what stock to buy for the upcoming week based on sales from the previous week and the upcoming weather.
+* The future stock page will show the most popular cocktail, the upcoming weather, a cash flow tables and then give a suggestion on what stock to buy for the upcoming week based on sales from the previous week and the upcoming weather.
 
 
 ## User Story
