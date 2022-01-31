@@ -91,7 +91,7 @@ $(document).ready(function () {
     $(".modal").addClass("is-active");
   });
 
-  $(".modal-button-close").click(function () {
+  $("#yesBtn").click(function () {
     $(".modal").removeClass("is-active");
     $(".drink-section").removeClass("is-hidden");
     $(".navbar").removeClass("is-hidden");
