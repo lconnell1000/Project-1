@@ -222,6 +222,7 @@ function updatestock() {
         Vodka: newVodkaStock,
         Cointreau: newCointreauStock,
       };
+      createTable(newStock);
       localStorage.setItem("currentStock", JSON.stringify(newStock));
 
       let updatedLongIslandsold =
@@ -264,6 +265,6 @@ function updatestock() {
     } else console.log("error, please make sure all cocktails are 0 or greater");
     {
     }
-    createTable(currentStock);
+    
   });
 }
