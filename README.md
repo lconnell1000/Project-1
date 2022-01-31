@@ -4,7 +4,13 @@
 
 * This web based application is designed to help manage the stock at a small cocktail bar. 
 
-* 
+* The application will feature 3 pages, a menu page, a current stock page and a future stock page. 
+
+* The menu will have a list of all the cocktails along with pictures of the cocktails, ingredients and methods they are made.
+
+* The current stock page will show how much of each spirit is in stock, and allow you to enter in how many of each cocktail was sold that day.
+
+* the future stock page will show the most popular cocktail, the upcoming weather, a cash flow tables and then give a suggestion on what stock to buy for the upcoming week based on sales from the previous week and the upcoming weather.
 
 
 ## User Story
@@ -42,17 +48,21 @@ Then I will be able to see the current stock has changed on the current stock pa
 
 ## Finished Product
 
+> **Note** : This shows the landing page with the age checker modal.
 ![This shows the landing page with the age checker modal.](./assets/images/Screenshotlanding.png)
 
+> **Note** : This shows the menu page
 ![This shows the menu page.](./assets/images/Screenshotmenu.png)
 
+> **Note** : This shows the page for current stock
 ![This shows the page for current stock.](./assets/images/Screenshotcurrentstock.png)
 
+> **Note** : This shows the modal for entering the cocktails sold that day
 ![This shows the modal for entering the cocktails sold that day.](./assets/images/Screenshotsales.png)
 
 
 
-## Grading Requirements
+
 
 
 ## Links
