@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Future Stock</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link rel="stylesheet" href="./assets/css/futurestock.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header class="">
+      <div class="tile is ancestor">
+        <div class="tile is-12 is-vertical is-parent">
+          <nav role="navigation" aria-label="main navigation">
+            <div>
+              <div>
+                <a
+                  class="nav-item"
+                  href="https://www.health.gov.au/health-topics/alcohol/about-alcohol/alcohol-laws-in-australia"
+                  ><strong> ? </strong>
+                </a>
+                <a class="nav-item" href="./index.html"> menu. </a>
+                <a class="nav-item" href="./currentstock.html">
+                  current stock.
+                </a>
+                <a class="nav-item" href="./futurestock.html">
+                  future stock.
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <article class="tile is-parent">
+          <div class="tile is-4 is-child box">
+            <p class="title">Best Seller</p>
+            <p class="title" id="bestsell"></p>
+          </div>
+          <figure class="tile box is-vertical" id="weather-box">
+            <p class="title">7-day forcast</p>
+            <div class="tile" id="weather"></div>
+          </figure>
+        </article>
+      </section>
+
+      <section>
+        <article class="tile is-parent">
+          <div class="tile is-6 is-child box">
+            <p class="title">Cash flow</p>
+            <table class="table">
+              <tr>
+                <th>Cash Reciepts</th>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Sale</td>
+                <td id="sales">Sales</td>
+              </tr>
+              <tr>
+                <th>Cash Payments</th>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Ingredient costs</td>
+                <td id="ing">costs</td>
+              </tr>
+              <tr>
+                <th>Net Cash Flow</th>
+                <td id="netCash"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="tile is-child box" id="orderPlan">
+            <p class="title">Suggestion</p>
+            <table class="table">
+              <tr>
+                <th>Type of cocktails</th>
+                <td id="drinkType"></td>
+              </tr>
+            </table>
+            <p class="title">What to buy</p>
+            <table class="table" id="order"></table>
+            <button class="button" id="saveBtn">Accept&Save</button>
+            <button class="button" id="downloadBtn">Download</button>
+          </div>
+        </article>
+      </section>
+      <!-- modal alert if entering not on sunday-->
+      <div id="modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Alert</strong>
+                    <br />
+                    You can only access this page on Sunday.
+                  </p>
+                </div>
+                <button class="button is-danger is-small" id="returnMenu">
+                  Return to Menu
+                </button>
+                <button
+                  class="button is-danger is-small"
+                  id="returnCurrentStock"
+                >
+                  Return to Current Stock
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+      <!-- modal alert when press save button-->
+      <div id="saveAlert" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <p class="customAlert">
+              <strong>Saved</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <script src="./assets/js/thirdpage.js"></script>
+    </main>
+  </body>
+</html>
