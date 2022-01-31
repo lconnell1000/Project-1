@@ -60,6 +60,13 @@ Then I will be able to see the current stock has changed on the current stock pa
 > **Note** : This shows the modal for entering the cocktails sold that day
 ![This shows the modal for entering the cocktails sold that day.](./assets/images/Screenshotsales.png)
 
+> **Note** : This shows the modal for if the user is trying to enter the future stock page when it is not Sunday
+![This shows the modal for if the user is trying to enter the future stock page when it is not Sunday.](./assets/images/ScreenshotSunday.png)
+
+> **Note** : This shows the page for future stock
+![This shows the page for future stock.](./assets/images/Screenshotfuturesales.png)
+
+
 
 
 
